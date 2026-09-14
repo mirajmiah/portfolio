@@ -161,16 +161,10 @@ function initProjectFilter() {
 }
 
 /* --------------------------------------------------------------------------
-   6. Contact form (frontend-only)
+   6. Contact form
    --------------------------------------------------------------------------
-   This validates and shows a confirmation message in the UI only — no data
-   is sent anywhere yet. To make it functional:
-     1. Pick a form backend (Formspree, EmailJS, Netlify Forms, or your own
-        API endpoint).
-     2. Replace the `handleSubmit` body below with a fetch()/EmailJS call
-        that sends `formData` to that service.
-     3. Keep the success/error UI states, just swap the fake delay for the
-        real network response.
+   Sends form data through FormSubmit's AJAX endpoint and shows a success
+   modal without navigating away from the portfolio page.
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById("contactForm");
@@ -205,8 +199,9 @@ function initContactForm() {
   }
 
   form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
     if (!form.checkValidity()) {
-      event.preventDefault();
       event.stopPropagation();
       form.classList.add("was-validated");
 
@@ -216,26 +211,28 @@ function initContactForm() {
       return;
     }
 
-    event.preventDefault();
     form.classList.add("was-validated");
 
     const formData = new FormData(form);
     const data = new URLSearchParams(formData);
 
     fetch(form.action, {
-      method: form.method,
+      method: "POST",
       headers: {
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: data
+      body: data.toString()
     })
       .then((response) => {
         if (!response.ok) {
           throw new Error("FormSubmit failed");
         }
+
         if (status) {
           status.textContent = "Your message was sent successfully!";
         }
+
         openModal();
         form.reset();
       })
