@@ -175,7 +175,34 @@ function initProjectFilter() {
 function initContactForm() {
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
+  const modal = document.getElementById("contactSuccessModal");
+  const closeModalButton = document.getElementById("contactSuccessClose");
+  const homeButton = document.getElementById("contactSuccessButton");
   if (!form) return;
+
+  const openModal = () => {
+    if (!modal) return;
+    modal.classList.add("visible");
+    modal.setAttribute("aria-hidden", "false");
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove("visible");
+    modal.setAttribute("aria-hidden", "true");
+  };
+
+  if (closeModalButton) {
+    closeModalButton.addEventListener("click", closeModal);
+  }
+
+  if (homeButton) {
+    homeButton.addEventListener("click", () => {
+      closeModal();
+      window.location.hash = "home";
+      window.location.href = "#home";
+    });
+  }
 
   form.addEventListener("submit", (event) => {
     if (!form.checkValidity()) {
@@ -189,11 +216,34 @@ function initContactForm() {
       return;
     }
 
+    event.preventDefault();
     form.classList.add("was-validated");
 
-    if (status) {
-      status.textContent = "Thanks for reaching out! Your message is ready to be sent.";
-    }
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+
+    fetch(form.action, {
+      method: form.method,
+      headers: {
+        "Accept": "application/json"
+      },
+      body: data
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("FormSubmit failed");
+        }
+        if (status) {
+          status.textContent = "Your message was sent successfully!";
+        }
+        openModal();
+        form.reset();
+      })
+      .catch(() => {
+        if (status) {
+          status.textContent = "The message could not be sent. Please try again.";
+        }
+      });
   });
 }
 

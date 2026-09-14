@@ -512,7 +512,7 @@
             <form class="contact-form" id="contactForm" method="POST" action="https://formsubmit.co/mirajmiah322173@gmail.com" novalidate>
               <input type="hidden" name="_subject" value="New portfolio contact message">
               <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="https://mirajmiah.github.io/portfolio/">
+              <input type="hidden" name="_template" value="table">
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="contactName" class="form-label">Name</label>
@@ -593,6 +593,18 @@
       <p class="footer-copyright">&copy; 2026 Miraj Miah. All rights reserved.</p>
     </div>
   </footer>
+
+  <div class="contact-modal" id="contactSuccessModal" aria-hidden="true">
+    <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="contactSuccessTitle">
+      <button class="contact-modal-close" id="contactSuccessClose" aria-label="Close">×</button>
+      <div class="contact-modal-icon">
+        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+      </div>
+      <h3 id="contactSuccessTitle">Message Sent Successfully</h3>
+      <p>Thank you for reaching out. We will contact you soon.</p>
+      <button class="btn btn-primary btn-hero contact-modal-button" id="contactSuccessButton">Back to Home</button>
+    </div>
+  </div>
 
   <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
     <i class="bi bi-arrow-up" aria-hidden="true"></i>

@@ -1025,6 +1025,68 @@ img {
   color: var(--accent);
 }
 
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 280ms ease, visibility 280ms ease;
+}
+
+.contact-modal.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contact-modal-card {
+  position: relative;
+  width: min(560px, calc(100vw - 2rem));
+  background: #10192d;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  text-align: center;
+  box-shadow: 0 16px 80px rgba(0, 0, 0, 0.8);
+}
+
+.contact-modal-card h3 {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2vw, 2.2rem);
+}
+
+.contact-modal-card p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.contact-modal-icon {
+  font-size: 3rem;
+  color: var(--accent);
+}
+
+.contact-modal-button {
+  min-width: 170px;
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
