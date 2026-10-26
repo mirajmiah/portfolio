@@ -4,35 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miraj Miah | Full Stack Developer &amp; CSE Student</title>
-  <meta name="description" content="Miraj Miah is a Computer Science and Engineering student focused on full-stack web development, real-time systems, database-driven applications, and API integration.">
-  <meta name="keywords" content="Miraj Miah, full stack developer, web developer, CSE student, React.js, Node.js, MongoDB, Django, portfolio, software engineering">
+  <meta name="description" content="Miraj Miah is a Full Stack Developer and Computer Science Engineering student specializing in React.js, Node.js, MongoDB, Django, real-time WebSockets, and clean API design.">
+  <meta name="keywords" content="Miraj Miah, Full Stack Developer, Software Engineer, Web Developer, React Developer, Node.js, MongoDB, Django, Socket.io, Portfolio">
   <meta name="author" content="Miraj Miah">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0a0f1d">
+  <meta name="theme-color" content="#07090e">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Miraj Miah | Full Stack Developer & CSE Student">
-  <meta property="og:description" content="Miraj Miah is a Computer Science and Engineering student focused on full-stack web development, real-time systems, database-driven applications, and API integration.">
+  <meta property="og:title" content="Miraj Miah | Full Stack Developer &amp; CSE Student">
+  <meta property="og:description" content="Portfolio of Miraj Miah - Full Stack Developer crafting real-time systems, scalable APIs, and modern web applications.">
+  <meta property="og:image" content="assets/images/miraj-profile.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:,">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-  <!-- Fonts -->
+  <!-- Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 Grid & Utilities -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap Icons (for social + UI icons) -->
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Custom styles -->
+  <!-- Custom Modern Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Background Ambient Aurora & Glow Mesh -->
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+    <div class="mesh-orb orb-3"></div>
+    <div class="mesh-grid"></div>
+  </div>
+
+  <!-- Mouse Spotlight (desktop only) -->
+  <div class="mouse-spotlight" id="mouseSpotlight" aria-hidden="true"></div>
 
   <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -40,25 +52,35 @@
   <header>
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Primary navigation">
       <div class="container">
-        <a class="navbar-brand" href="#home">Miraj<span class="brand-accent">Miah</span></a>
+        <a class="navbar-brand" href="#home">
+          <span class="brand-code-symbol">&lt;</span>Miraj<span class="brand-accent">Miah</span><span class="brand-code-symbol">/&gt;</span>
+        </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="toggler-line"></span>
-          <span class="toggler-line"></span>
-          <span class="toggler-line"></span>
-        </button>
+        <div class="d-flex align-items-center gap-2 d-lg-none">
+          <a href="#contact" class="btn btn-sm btn-primary-glow px-3 py-1 text-nowrap">Hire Me</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-line"></span>
+            <span class="toggler-line"></span>
+            <span class="toggler-line"></span>
+          </button>
+        </div>
 
         <div class="collapse navbar-collapse" id="navMenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
             <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
             <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-            <li class="nav-item"><a class="nav-link nav-cta" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="nav-link nav-cta-glow" href="#contact">
+                <span>Let's Connect</span>
+                <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -69,145 +91,321 @@
 
     <!-- ============ HERO ============ -->
     <section id="home" class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="grid-overlay"></div>
-        <span class="float-symbol sym1">&lt;/&gt;</span>
-        <span class="float-symbol sym2">{ }</span>
-        <span class="float-symbol sym3">01</span>
-        <span class="float-symbol sym4">;</span>
-      </div>
-
       <div class="container">
         <div class="row align-items-center gy-5">
-          <div class="col-lg-6">
-            <p class="hero-kicker">Full Stack Developer &amp; CSE Student</p>
+          <div class="col-lg-6 hero-text-col">
+
+            <!-- Availability Badge -->
+            <div class="hero-status-pill">
+              <span class="status-pulse-dot"></span>
+              <span class="status-text">Available for Internships &amp; Full-Time Roles</span>
+            </div>
+
             <h1 class="hero-title">
-              Hi, I'm <span class="text-gradient">Miraj Miah</span>
+              Crafting <span class="text-gradient">Scalable Web Apps</span> &amp; Modern APIs
             </h1>
-            <p class="hero-subtitle">Building usable software with React, Node.js, MongoDB, Django, and Python.</p>
+
+            <div class="hero-role-wrapper">
+              <span class="hero-role-label">I'm Miraj —</span>
+              <span class="hero-kicker" id="heroTypingText">Full Stack Developer</span>
+              <span class="hero-cursor">|</span>
+            </div>
+
             <p class="hero-lede">
-              I design and build full-stack web applications, real-time features, and database-driven systems with a focus on clean architecture and practical product thinking.
+              Computer Science &amp; Engineering student specializing in building high-performance real-time applications, REST APIs, and intuitive digital interfaces with <strong>React</strong>, <strong>Node.js</strong>, <strong>MongoDB</strong>, and <strong>Django</strong>.
             </p>
+
             <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary btn-hero">View My Projects</a>
-              <a href="assets/resume.pdf" class="btn btn-outline-hero" download>
-                Download Resume <i class="bi bi-download" aria-hidden="true"></i>
+              <a href="#projects" class="btn btn-primary-glow btn-hero">
+                <span>Explore Projects</span>
+                <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+              </a>
+              <a href="assets/resume.pdf" class="btn btn-glass-hero" download="Miraj_Miah_Resume.pdf">
+                <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+                <span>Resume (PDF)</span>
+              </a>
+              <a href="#contact" class="btn btn-outline-hero d-none d-sm-inline-flex">
+                <i class="bi bi-envelope" aria-hidden="true"></i>
+                <span>Contact</span>
               </a>
             </div>
-            <div class="hero-meta" aria-label="Current focus areas">
-              <span>React.js</span>
-              <span>Node.js</span>
-              <span>MongoDB</span>
-              <span>API Integration</span>
+
+            <!-- Key Quick Stats -->
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Production Projects</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="hero-stat-item">
+                <span class="stat-number">1</span>
+                <span class="stat-label">Full Stack Internship</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="hero-stat-item">
+                <span class="stat-number">2027</span>
+                <span class="stat-label">B.Tech CSE Class</span>
+              </div>
             </div>
 
-            <ul class="hero-socials" aria-label="Social links">
-              <li>
-                <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                  <i class="bi bi-github" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-                  <i class="bi bi-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/hashtag_speedy?stkn=N244bWN4bGg1aG1v" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
-                  <i class="bi bi-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
+            <!-- Social Links -->
+            <div class="hero-socials-group">
+              <span class="socials-label">Connect:</span>
+              <ul class="hero-socials" aria-label="Social links">
+                <li>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub Profile">
+                    <i class="bi bi-github" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn Profile">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/hashtag_speedy?stkn=N244bWN4bGg1aG1v" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile" title="Instagram">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <button type="button" class="btn-copy-email" id="quickCopyEmailBtn" title="Click to copy email address">
+                    <i class="bi bi-copy" aria-hidden="true"></i>
+                    <span>mirajmiah322173@gmail.com</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div class="col-lg-6">
-            <div class="code-window" role="img" aria-label="Code editor showing a short introductory script">
-              <div class="code-window-bar">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-                <span class="code-window-title">about-me.js</span>
+          <!-- Hero Right: Interactive Code Studio & Terminal -->
+          <div class="col-lg-6 hero-visual-col">
+            <div class="code-terminal-card" role="region" aria-label="Interactive Developer Studio">
+              <!-- Window Header -->
+              <div class="terminal-header">
+                <div class="window-controls">
+                  <span class="win-btn close-btn"></span>
+                  <span class="win-btn min-btn"></span>
+                  <span class="win-btn max-btn"></span>
+                </div>
+                <!-- Interactive Tabs -->
+                <div class="terminal-tabs" role="tablist">
+                  <button class="terminal-tab active" data-tab="config" role="tab" aria-selected="true">
+                    <i class="bi bi-filetype-tsx tab-icon" aria-hidden="true"></i>
+                    <span>developer.ts</span>
+                  </button>
+                  <button class="terminal-tab" data-tab="stack" role="tab" aria-selected="false">
+                    <i class="bi bi-braces tab-icon" aria-hidden="true"></i>
+                    <span>techStack.json</span>
+                  </button>
+                  <button class="terminal-tab" data-tab="terminal" role="tab" aria-selected="false">
+                    <i class="bi bi-terminal-fill tab-icon" aria-hidden="true"></i>
+                    <span>bash</span>
+                  </button>
+                </div>
+                <button class="btn-copy-code" id="copyCodeSnippetBtn" title="Copy code" aria-label="Copy snippet to clipboard">
+                  <i class="bi bi-clipboard" aria-hidden="true"></i>
+                </button>
               </div>
-              <pre class="code-window-body"><code><span class="tok-kw">const</span> <span class="tok-var">developer</span> = {
-  <span class="tok-prop">name</span>: <span class="tok-str">"Miraj Miah"</span>,
-  <span class="tok-prop">role</span>: <span class="tok-str">"Full Stack Developer"</span>,
-  <span class="tok-prop">stack</span>: [<span class="tok-str">"React.js"</span>, <span class="tok-str">"Node.js"</span>, <span class="tok-str">"MongoDB"</span>, <span class="tok-str">"Django"</span>, <span class="tok-str">"Python"</span>],
-  <span class="tok-prop">currentlyLearning</span>: <span class="tok-str">"scalable app architecture"</span>,
-  <span class="tok-prop">openTo</span>: <span class="tok-str">"internships & full-time roles"</span>,
+
+              <!-- Tab Content 1: TypeScript developer.ts -->
+              <div class="terminal-body tab-pane active" id="pane-config">
+                <pre><code><span class="c-comment">// Full Stack Engineer &amp; CSE Student</span>
+<span class="c-keyword">import</span> { <span class="c-type">Engineer</span>, <span class="c-type">Specialization</span> } <span class="c-keyword">from</span> <span class="c-string">'@miraj/core'</span>;
+
+<span class="c-keyword">export const</span> <span class="c-var">mirajMiah</span>: <span class="c-type">Engineer</span> = {
+  <span class="c-prop">name</span>: <span class="c-string">"Miraj Miah"</span>,
+  <span class="c-prop">location</span>: <span class="c-string">"Siliguri, West Bengal, IN"</span>,
+  <span class="c-prop">degree</span>: <span class="c-string">"B.Tech CSE (2024 - 2027)"</span>,
+  <span class="c-prop">status</span>: <span class="c-string">"Open to Internships &amp; Roles"</span>,
+  <span class="c-prop">focus</span>: [
+    <span class="c-string">"MERN Stack"</span>,
+    <span class="c-string">"Real-Time WebSockets"</span>,
+    <span class="c-string">"REST API Design"</span>,
+    <span class="c-string">"Django &amp; SQL"</span>
+  ],
+  <span class="c-prop">internship</span>: <span class="c-string">"CodTech IT Solutions"</span>,
+  <span class="c-function">readyToShip</span>: () =&gt; <span class="c-keyword">true</span>
 };
 
-<span class="tok-fn">buildSomethingUseful</span>(developer);<span class="code-cursor" id="typingCursor">|</span></code></pre>
+<span class="c-function">console</span>.<span class="c-method">log</span>(<span class="c-string">"🚀 Building high-impact web products..."</span>);</code></pre>
+              </div>
+
+              <!-- Tab Content 2: techStack.json -->
+              <div class="terminal-body tab-pane d-none" id="pane-stack">
+                <pre><code>{
+  <span class="c-prop">"frontend"</span>: [<span class="c-string">"React.js"</span>, <span class="c-string">"JavaScript (ES6+)"</span>, <span class="c-string">"Tailwind CSS"</span>, <span class="c-string">"Bootstrap"</span>],
+  <span class="c-prop">"backend"</span>: [<span class="c-string">"Node.js"</span>, <span class="c-string">"Express.js"</span>, <span class="c-string">"Django"</span>, <span class="c-string">"Python"</span>],
+  <span class="c-prop">"realtime"</span>: [<span class="c-string">"Socket.IO"</span>, <span class="c-string">"WebSockets"</span>, <span class="c-string">"Event Driven"</span>],
+  <span class="c-prop">"databases"</span>: [<span class="c-string">"MongoDB"</span>, <span class="c-string">"Mongoose"</span>, <span class="c-string">"MySQL"</span>, <span class="c-string">"SQL"</span>],
+  <span class="c-prop">"security"</span>: [<span class="c-string">"JWT"</span>, <span class="c-string">"HTTP-Only Cookies"</span>, <span class="c-string">"bcrypt"</span>, <span class="c-string">"CORS"</span>],
+  <span class="c-prop">"aiIntegration"</span>: [<span class="c-string">"Google Gemini API"</span>]
+}</code></pre>
+              </div>
+
+              <!-- Tab Content 3: bash terminal -->
+              <div class="terminal-body tab-pane d-none" id="pane-terminal">
+                <pre><code><span class="c-prompt">$</span> curl -s https://api.miraj.dev/v1/profile | jq .
+{
+  <span class="c-prop">"developer"</span>: <span class="c-string">"Miraj Miah"</span>,
+  <span class="c-prop">"college"</span>: <span class="c-string">"Siliguri Institute of Technology"</span>,
+  <span class="c-prop">"internship"</span>: <span class="c-string">"Full Stack Intern @ CodTech"</span>,
+  <span class="c-prop">"featuredProject"</span>: <span class="c-string">"Talksy (React + Socket.IO)"</span>,
+  <span class="c-prop">"status"</span>: <span class="c-keyword">200 OK</span>
+}
+<span class="c-prompt">$</span> npm run test:production
+<span class="c-success">✔ 3 Projects Tested &amp; Deployed (0 errors)</span>
+<span class="c-prompt">$</span> <span class="terminal-cursor">█</span></code></pre>
+              </div>
+
+              <!-- Terminal Footer Status Bar -->
+              <div class="terminal-footer">
+                <div class="terminal-status-left">
+                  <span class="git-branch"><i class="bi bi-git"></i> main*</span>
+                  <span class="utf-mode">UTF-8</span>
+                </div>
+                <div class="terminal-status-right">
+                  <span class="status-indicator-dot"></span>
+                  <span>TypeScript 5.4</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-        <span></span>
+        <span class="mouse-icon"></span>
+        <span class="scroll-arrow"><i class="bi bi-chevron-down"></i></span>
       </a>
     </section>
 
-    <!-- ============ ABOUT ============ -->
+    <!-- ============ ABOUT (Bento Grid) ============ -->
     <section id="about" class="section about-section reveal">
       <div class="container">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-5">
-            <div class="about-card">
-              <div class="about-card-glow" aria-hidden="true"></div>
-              <div class="about-card-avatar" aria-label="Miraj Miah profile photo">
-                <img src="https://i.ibb.co/b5ZWPZGC/Miraj-portfolio.jpg" alt="Miraj Miah">
+        <div class="section-header text-center">
+          <p class="section-eyebrow"><i class="bi bi-person-badge"></i> About Me</p>
+          <h2 class="section-title">Architecture Mindset, Practical Engineering</h2>
+          <p class="section-subtitle">
+            Bridging frontend design aesthetics with secure, high-throughput backend infrastructure.
+          </p>
+        </div>
+
+        <div class="bento-grid mt-4">
+
+          <!-- Bento Card 1: Identity Profile Card -->
+          <div class="bento-item bento-profile">
+            <div class="bento-profile-inner">
+              <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <img src="assets/images/miraj-profile.jpg" alt="Miraj Miah" class="avatar-img" width="128" height="128" loading="lazy">
+                <span class="avatar-verified" title="Verified Developer">
+                  <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                </span>
               </div>
-              <p class="about-card-name">Miraj Miah</p>
-              <p class="about-card-role">B.Tech CSE Student</p>
-              <ul class="about-card-tags">
-                <li>Full-Stack</li>
-                <li>Real-Time Apps</li>
-                <li>API Integration</li>
-              </ul>
+              <div class="bento-profile-info">
+                <h3 class="bento-name">Miraj Miah</h3>
+                <p class="bento-role">Full Stack Developer &amp; CSE Student</p>
+                <div class="bento-location">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <span>Siliguri, West Bengal • <span id="istClock">IST</span></span>
+                </div>
+              </div>
+              <div class="bento-tags">
+                <span class="pill-tag">Full-Stack MERN</span>
+                <span class="pill-tag">Django &amp; SQL</span>
+                <span class="pill-tag">Socket.IO</span>
+                <span class="pill-tag">Gemini AI</span>
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-7">
-            <p class="section-eyebrow">About</p>
-            <h2 class="section-title">A developer focused on real-world software, clean APIs, and practical product thinking.</h2>
-            <p class="section-text">
-              I am a Computer Science and Engineering student with hands-on experience in full-stack web development,
-              real-time applications, database-driven systems, and API integration. My work spans both frontend and backend,
-              with a strong focus on building functional, secure, and user-friendly digital products.
+          <!-- Bento Card 2: Narrative Bio -->
+          <div class="bento-item bento-bio">
+            <div class="bento-card-header">
+              <div class="bento-icon-wrapper">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <span class="bento-label">My Journey</span>
+            </div>
+            <h3 class="bento-heading">Building solutions with purpose and clean code.</h3>
+            <p class="bento-text">
+              I am a <strong>Computer Science &amp; Engineering</strong> student at <strong>Siliguri Institute of Technology</strong> with a prior Diploma from <strong>Siliguri Government Polytechnic</strong>.
             </p>
-            <p class="section-text">
-              I have completed a virtual Full Stack Development internship at CodTech IT Solutions and built projects including
-              Nexus Chat, a Student Management System, and a Grammar Assistant. I enjoy solving technical problems through
-              structured development, debugging, testing, and improving the overall experience of the application.
+            <p class="bento-text">
+              During my virtual Full Stack Development internship at <strong>CodTech IT Solutions</strong>, I architected end-to-end features for real-time web applications. I love taking complex backend requirements and delivering snappy, beautifully engineered user experiences.
             </p>
+            <div class="bento-highlights">
+              <div class="highlight-chip"><i class="bi bi-check2-circle"></i> Clean Code Standards</div>
+              <div class="highlight-chip"><i class="bi bi-check2-circle"></i> Practical Problem Solving</div>
+              <div class="highlight-chip"><i class="bi bi-check2-circle"></i> Real-Time Architecture</div>
+            </div>
+          </div>
 
-            <div class="row g-3 about-stats">
-              <div class="col-6 col-md-3">
-                <div class="stat-card">
-                  <i class="bi bi-mortarboard" aria-hidden="true"></i>
-                  <p>B.Tech CSE</p>
+          <!-- Bento Card 3: Four Pillars of My Engineering -->
+          <div class="bento-item bento-pillars">
+            <div class="bento-card-header">
+              <div class="bento-icon-wrapper">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <span class="bento-label">Core Pillars</span>
+            </div>
+            <div class="pillars-grid">
+              <div class="pillar-box">
+                <i class="bi bi-server pillar-icon"></i>
+                <h4>Scalable APIs</h4>
+                <p>Node.js, Express &amp; Django with modular REST controllers and validation.</p>
+              </div>
+              <div class="pillar-box">
+                <i class="bi bi-broadcast pillar-icon"></i>
+                <h4>Real-Time Systems</h4>
+                <p>Bi-directional event handling, Socket.IO channels, and instant state updates.</p>
+              </div>
+              <div class="pillar-box">
+                <i class="bi bi-shield-check pillar-icon"></i>
+                <h4>Security First</h4>
+                <p>JWT auth tokens, HTTP-only cookies, password hashing with bcrypt, and CORS.</p>
+              </div>
+              <div class="pillar-box">
+                <i class="bi bi-database-check pillar-icon"></i>
+                <h4>Data Modeling</h4>
+                <p>Optimized schema design with MongoDB Mongoose and relational MySQL queries.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 4: Quick Metrics & Focus -->
+          <div class="bento-item bento-metrics">
+            <div class="bento-card-header">
+              <div class="bento-icon-wrapper">
+                <i class="bi bi-mortarboard-fill"></i>
+              </div>
+              <span class="bento-label">Current Focus</span>
+            </div>
+            <div class="metrics-content">
+              <div class="metric-row">
+                <div class="metric-icon-box"><i class="bi bi-book"></i></div>
+                <div>
+                  <strong>B.Tech Degree in Progress</strong>
+                  <p class="mb-0 text-muted">Siliguri Institute of Technology (2024–2027)</p>
                 </div>
               </div>
-              <div class="col-6 col-md-3">
-                <div class="stat-card">
-                  <i class="bi bi-code-slash" aria-hidden="true"></i>
-                  <p>Full-Stack</p>
+              <div class="metric-row mt-3">
+                <div class="metric-icon-box"><i class="bi bi-briefcase"></i></div>
+                <div>
+                  <strong>CodTech IT Solutions Alumni</strong>
+                  <p class="mb-0 text-muted">Full Stack Virtual Development Internship</p>
                 </div>
               </div>
-              <div class="col-6 col-md-3">
-                <div class="stat-card">
-                  <i class="bi bi-globe2" aria-hidden="true"></i>
-                  <p>Real-Time Apps</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="stat-card">
-                  <i class="bi bi-kanban" aria-hidden="true"></i>
-                  <p>3+ Projects</p>
+              <div class="metric-row mt-3">
+                <div class="metric-icon-box"><i class="bi bi-stars"></i></div>
+                <div>
+                  <strong>Next Milestones</strong>
+                  <p class="mb-0 text-muted">Distributed systems, Docker containerization &amp; Next.js</p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -215,103 +413,229 @@
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="section skills-section reveal">
       <div class="container">
-        <p class="section-eyebrow text-center">Skills</p>
-        <h2 class="section-title text-center">Technical Skills</h2>
-        <p class="section-text text-center mx-auto section-intro">
-          Technologies and concepts I actively use in development, with a focus on building scalable and secure applications.
-        </p>
+        <div class="section-header text-center">
+          <p class="section-eyebrow"><i class="bi bi-tools"></i> Tech Stack</p>
+          <h2 class="section-title">Technical Skills &amp; Proficiencies</h2>
+          <p class="section-subtitle">
+            Tools, frameworks, and foundational concepts I actively use to engineer real-world applications.
+          </p>
+        </div>
 
-        <div class="row g-4 mt-2">
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-braces" aria-hidden="true"></i> Programming Languages</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-terminal"></i> C</li>
-                <li><i class="bi bi-cup-hot"></i> Java</li>
-                <li><i class="bi bi-code-square"></i> Python</li>
-                <li><i class="bi bi-filetype-js"></i> JavaScript</li>
-              </ul>
+        <!-- Skills Filter Tabs -->
+        <div class="skills-filter-nav" role="tablist" aria-label="Filter skills by category">
+          <button class="skills-tab-btn active" data-skill-filter="all" role="tab" aria-selected="true">All Technologies</button>
+          <button class="skills-tab-btn" data-skill-filter="frontend" role="tab" aria-selected="false">Frontend</button>
+          <button class="skills-tab-btn" data-skill-filter="backend" role="tab" aria-selected="false">Backend</button>
+          <button class="skills-tab-btn" data-skill-filter="database" role="tab" aria-selected="false">Databases</button>
+          <button class="skills-tab-btn" data-skill-filter="security" role="tab" aria-selected="false">Security &amp; Tools</button>
+          <button class="skills-tab-btn" data-skill-filter="fundamentals" role="tab" aria-selected="false">Core CS</button>
+        </div>
+
+        <div class="skills-cards-grid mt-4" id="skillsContainer">
+
+          <!-- Frontend Category -->
+          <div class="skill-tile" data-cat="frontend">
+            <div class="skill-tile-icon"><i class="bi bi-react text-react"></i></div>
+            <div class="skill-tile-body">
+              <h4>React.js</h4>
+              <p>Hooks, State, Virtual DOM</p>
             </div>
+            <span class="skill-tag">Advanced</span>
           </div>
 
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-window" aria-hidden="true"></i> Frontend Development</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-react"></i> React.js</li>
-                <li><i class="bi bi-filetype-html"></i> HTML5</li>
-                <li><i class="bi bi-filetype-css"></i> CSS3</li>
-                <li><i class="bi bi-palette"></i> Tailwind CSS</li>
-                <li><i class="bi bi-bootstrap"></i> Bootstrap</li>
-                <li><i class="bi bi-ui-checks"></i> DaisyUI</li>
-              </ul>
+          <div class="skill-tile" data-cat="frontend">
+            <div class="skill-tile-icon"><i class="bi bi-filetype-js text-js"></i></div>
+            <div class="skill-tile-body">
+              <h4>JavaScript (ES6+)</h4>
+              <p>Async/Await, Closures, DOM</p>
             </div>
+            <span class="skill-tag">Core</span>
           </div>
 
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-server" aria-hidden="true"></i> Backend Development</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-node-plus"></i> Node.js</li>
-                <li><i class="bi bi-lightning-charge"></i> Express.js</li>
-                <li><i class="bi bi-diagram-3"></i> Django</li>
-                <li><i class="bi bi-arrow-repeat"></i> REST APIs</li>
-                <li><i class="bi bi-broadcast"></i> Socket.IO</li>
-              </ul>
+          <div class="skill-tile" data-cat="frontend">
+            <div class="skill-tile-icon"><i class="bi bi-palette text-tailwind"></i></div>
+            <div class="skill-tile-body">
+              <h4>Tailwind CSS</h4>
+              <p>Utility-First, Responsive Design</p>
             </div>
+            <span class="skill-tag">Proficient</span>
           </div>
 
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-database" aria-hidden="true"></i> Databases</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-database-check"></i> MongoDB</li>
-                <li><i class="bi bi-database-add"></i> Mongoose</li>
-                <li><i class="bi bi-table"></i> SQL</li>
-                <li><i class="bi bi-server"></i> MySQL</li>
-              </ul>
+          <div class="skill-tile" data-cat="frontend">
+            <div class="skill-tile-icon"><i class="bi bi-filetype-html text-html"></i></div>
+            <div class="skill-tile-body">
+              <h4>HTML5 &amp; CSS3</h4>
+              <p>Semantic Layout, Flex/Grid</p>
             </div>
+            <span class="skill-tag">Foundational</span>
           </div>
 
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-shield-lock" aria-hidden="true"></i> Authentication &amp; Security</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-key"></i> JWT</li>
-                <li><i class="bi bi-cookie"></i> HTTP-only Cookies</li>
-                <li><i class="bi bi-lock"></i> bcrypt</li>
-                <li><i class="bi bi-file-earmark-lock"></i> CORS</li>
-                <li><i class="bi bi-check2-square"></i> Input Validation</li>
-                <li><i class="bi bi-slash-circle"></i> Protected Routes</li>
-                <li><i class="bi bi-speedometer2"></i> Rate Limiting</li>
-              </ul>
+          <div class="skill-tile" data-cat="frontend">
+            <div class="skill-tile-icon"><i class="bi bi-bootstrap text-bootstrap"></i></div>
+            <div class="skill-tile-body">
+              <h4>Bootstrap 5 &amp; DaisyUI</h4>
+              <p>Rapid UI &amp; Component Systems</p>
             </div>
+            <span class="skill-tag">Proficient</span>
           </div>
 
-          <div class="col-md-4">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-tools" aria-hidden="true"></i> Tools &amp; Technologies</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-git"></i> Git</li>
-                <li><i class="bi bi-github"></i> GitHub</li>
-                <li><i class="bi bi-send"></i> Postman</li>
-                <li><i class="bi bi-code-square"></i> Visual Studio Code</li>
-                <li><i class="bi bi-cloud-upload"></i> Cloudinary</li>
-                <li><i class="bi bi-diagram-2"></i> Zustand</li>
-              </ul>
+          <!-- Backend Category -->
+          <div class="skill-tile" data-cat="backend">
+            <div class="skill-tile-icon"><i class="bi bi-node-plus text-node"></i></div>
+            <div class="skill-tile-body">
+              <h4>Node.js</h4>
+              <p>Event Loop, Non-blocking I/O</p>
             </div>
+            <span class="skill-tag">Advanced</span>
           </div>
 
-          <div class="col-md-6 mx-auto">
-            <div class="skill-group">
-              <h3 class="skill-group-title"><i class="bi bi-diagram-3" aria-hidden="true"></i> Core Concepts</h3>
-              <ul class="skill-list">
-                <li><i class="bi bi-diagram-3-fill"></i> Data Structures and Algorithms (DSA)</li>
-                <li><i class="bi bi-box-seam"></i> Object-Oriented Programming (OOP)</li>
-                <li><i class="bi bi-cpu"></i> Operating Systems (OS)</li>
-              </ul>
+          <div class="skill-tile" data-cat="backend">
+            <div class="skill-tile-icon"><i class="bi bi-lightning-charge text-express"></i></div>
+            <div class="skill-tile-body">
+              <h4>Express.js</h4>
+              <p>REST Routing, Middleware</p>
             </div>
+            <span class="skill-tag">Advanced</span>
           </div>
+
+          <div class="skill-tile" data-cat="backend">
+            <div class="skill-tile-icon"><i class="bi bi-broadcast text-socket"></i></div>
+            <div class="skill-tile-body">
+              <h4>Socket.IO</h4>
+              <p>Real-Time Bi-Directional Events</p>
+            </div>
+            <span class="skill-tag">Specialized</span>
+          </div>
+
+          <div class="skill-tile" data-cat="backend">
+            <div class="skill-tile-icon"><i class="bi bi-diagram-3 text-django"></i></div>
+            <div class="skill-tile-body">
+              <h4>Django</h4>
+              <p>MVT Pattern, ORM, Admin</p>
+            </div>
+            <span class="skill-tag">Proficient</span>
+          </div>
+
+          <div class="skill-tile" data-cat="backend">
+            <div class="skill-tile-icon"><i class="bi bi-arrow-repeat text-api"></i></div>
+            <div class="skill-tile-body">
+              <h4>RESTful API Design</h4>
+              <p>JSON Specs, CRUD, Error Handling</p>
+            </div>
+            <span class="skill-tag">Standard</span>
+          </div>
+
+          <!-- Databases Category -->
+          <div class="skill-tile" data-cat="database">
+            <div class="skill-tile-icon"><i class="bi bi-database-check text-mongo"></i></div>
+            <div class="skill-tile-body">
+              <h4>MongoDB</h4>
+              <p>NoSQL Document Store</p>
+            </div>
+            <span class="skill-tag">Advanced</span>
+          </div>
+
+          <div class="skill-tile" data-cat="database">
+            <div class="skill-tile-icon"><i class="bi bi-database-add text-mongoose"></i></div>
+            <div class="skill-tile-body">
+              <h4>Mongoose</h4>
+              <p>Schema Models, Validation</p>
+            </div>
+            <span class="skill-tag">Proficient</span>
+          </div>
+
+          <div class="skill-tile" data-cat="database">
+            <div class="skill-tile-icon"><i class="bi bi-table text-sql"></i></div>
+            <div class="skill-tile-body">
+              <h4>SQL &amp; MySQL</h4>
+              <p>Relational Schemas, Joins</p>
+            </div>
+            <span class="skill-tag">Proficient</span>
+          </div>
+
+          <!-- Security & Tools Category -->
+          <div class="skill-tile" data-cat="security">
+            <div class="skill-tile-icon"><i class="bi bi-shield-lock text-jwt"></i></div>
+            <div class="skill-tile-body">
+              <h4>JWT &amp; Auth</h4>
+              <p>Stateless Tokens, HTTP-only Cookies</p>
+            </div>
+            <span class="skill-tag">Secured</span>
+          </div>
+
+          <div class="skill-tile" data-cat="security">
+            <div class="skill-tile-icon"><i class="bi bi-lock text-security"></i></div>
+            <div class="skill-tile-body">
+              <h4>bcrypt &amp; Security</h4>
+              <p>Password Hashing, CORS, Protection</p>
+            </div>
+            <span class="skill-tag">Essential</span>
+          </div>
+
+          <div class="skill-tile" data-cat="security">
+            <div class="skill-tile-icon"><i class="bi bi-git text-git"></i></div>
+            <div class="skill-tile-body">
+              <h4>Git &amp; GitHub</h4>
+              <p>Version Control, CI/CD, Branches</p>
+            </div>
+            <span class="skill-tag">Daily</span>
+          </div>
+
+          <div class="skill-tile" data-cat="security">
+            <div class="skill-tile-icon"><i class="bi bi-send text-postman"></i></div>
+            <div class="skill-tile-body">
+              <h4>Postman</h4>
+              <p>API Testing &amp; Documentation</p>
+            </div>
+            <span class="skill-tag">Tooling</span>
+          </div>
+
+          <div class="skill-tile" data-cat="security">
+            <div class="skill-tile-icon"><i class="bi bi-stars text-ai"></i></div>
+            <div class="skill-tile-body">
+              <h4>Gemini API</h4>
+              <p>Generative AI Integration</p>
+            </div>
+            <span class="skill-tag">Applied AI</span>
+          </div>
+
+          <!-- Core CS & Languages Category -->
+          <div class="skill-tile" data-cat="fundamentals">
+            <div class="skill-tile-icon"><i class="bi bi-code-square text-python"></i></div>
+            <div class="skill-tile-body">
+              <h4>Python</h4>
+              <p>Object-Oriented, Scripts, Django</p>
+            </div>
+            <span class="skill-tag">Language</span>
+          </div>
+
+          <div class="skill-tile" data-cat="fundamentals">
+            <div class="skill-tile-icon"><i class="bi bi-cup-hot text-java"></i></div>
+            <div class="skill-tile-body">
+              <h4>Java</h4>
+              <p>OOP Paradigms &amp; Fundamentals</p>
+            </div>
+            <span class="skill-tag">Language</span>
+          </div>
+
+          <div class="skill-tile" data-cat="fundamentals">
+            <div class="skill-tile-icon"><i class="bi bi-terminal text-c"></i></div>
+            <div class="skill-tile-body">
+              <h4>C Programming</h4>
+              <p>Pointers, Memory, Structures</p>
+            </div>
+            <span class="skill-tag">Language</span>
+          </div>
+
+          <div class="skill-tile" data-cat="fundamentals">
+            <div class="skill-tile-icon"><i class="bi bi-diagram-3-fill text-dsa"></i></div>
+            <div class="skill-tile-body">
+              <h4>DSA &amp; OOP</h4>
+              <p>Trees, Graphs, Sorting, System Design</p>
+            </div>
+            <span class="skill-tag">Foundations</span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -319,91 +643,191 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="section projects-section reveal">
       <div class="container">
-        <p class="section-eyebrow text-center">Projects</p>
-        <h2 class="section-title text-center">Selected Work</h2>
-        <p class="section-text text-center mx-auto section-intro">
-          A few projects that demonstrate my backend, frontend, and full-stack decision-making across real-world application workflows.
-        </p>
+        <div class="section-header text-center">
+          <p class="section-eyebrow"><i class="bi bi-folder-check"></i> Featured Work</p>
+          <h2 class="section-title">Selected Projects</h2>
+          <p class="section-subtitle">
+            Demonstrating full-stack engineering, real-time messaging architectures, database systems, and AI integration.
+          </p>
+        </div>
 
+        <!-- Filter Bar -->
         <div class="filter-bar" role="tablist" aria-label="Filter projects by category">
-          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
-          <button class="filter-btn" data-filter="backend" role="tab" aria-selected="false">Backend</button>
-          <button class="filter-btn" data-filter="other" role="tab" aria-selected="false">Other</button>
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+          <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false">Full-Stack &amp; Real-Time</button>
+          <button class="filter-btn" data-filter="backend" role="tab" aria-selected="false">Backend &amp; SQL</button>
+          <button class="filter-btn" data-filter="ai" role="tab" aria-selected="false">AI &amp; Utilities</button>
         </div>
 
         <div class="row g-4" id="projectGrid">
 
-          <div class="col-md-6 col-lg-4 project-item" data-category="web">
-            <article class="project-card">
-              <div class="project-thumb project-thumb-one" aria-hidden="true">
-                <div class="project-thumb-overlay">
-                  <span>Nexus Chat</span>
+          <!-- PROJECT 1: Talksy -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="fullstack">
+            <article class="modern-project-card">
+              <div class="project-thumb-container">
+                <img src="assets/images/talksy.jpg" alt="Talksy Real-time Chat Application Mockup" class="project-thumb-img" loading="lazy">
+                <div class="project-card-overlay">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="Live Demo">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="View Source on GitHub">
+                    <i class="bi bi-github"></i>
+                  </a>
                 </div>
+                <span class="card-status-badge badge-featured">
+                  <i class="bi bi-broadcast"></i> Real-Time Socket.IO
+                </span>
               </div>
-              <div class="project-body">
-                <div class="project-header-row">
-                  <h3>Nexus Chat</h3>
-                  <span class="project-badge">Full Stack</span>
+
+              <div class="project-card-body">
+                <div class="project-title-row">
+                  <h3 class="project-card-title">Talksy</h3>
+                  <span class="project-tech-category">Full Stack</span>
                 </div>
-                <p>A real-time messaging app with secure authentication, online presence, profile updates, and persistent chat history.</p>
-                <ul class="project-tech">
-                  <li>React.js</li><li>Node.js</li><li>Express.js</li><li>MongoDB</li><li>Socket.IO</li>
+                <p class="project-card-description">
+                  A full-stack real-time chat application with secure authentication, one-to-one messaging, online presence indicators, and image uploads.
+                </p>
+
+                <!-- Architectural Highlights from CV -->
+                <ul class="project-features-list">
+                  <li><i class="bi bi-check2"></i> Real-time one-to-one messaging via Socket.IO</li>
+                  <li><i class="bi bi-check2"></i> JWT auth in HTTP-only cookies with bcrypt hashing</li>
+                  <li><i class="bi bi-check2"></i> Cloudinary image uploads &amp; Zustand state management</li>
                 </ul>
-                <div class="project-links">
-                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-hero">
+
+                <div class="project-tech-tags">
+                  <span>React.js</span>
+                  <span>Node.js</span>
+                  <span>Express.js</span>
+                  <span>MongoDB</span>
+                  <span>Socket.IO</span>
+                  <span>Zustand</span>
+                </div>
+
+                <div class="project-card-actions">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-demo">
+                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-github">
                     <i class="bi bi-github" aria-hidden="true"></i> GitHub
                   </a>
+                  <button type="button" class="btn btn-sm btn-project-details project-detail-trigger" data-project="talksy" title="View Architecture Details">
+                    <i class="bi bi-info-circle"></i> Details
+                  </button>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="col-md-6 col-lg-4 project-item" data-category="backend">
-            <article class="project-card">
-              <div class="project-thumb project-thumb-two" aria-hidden="true">
-                <div class="project-thumb-overlay">
-                  <span>Student System</span>
+          <!-- PROJECT 2: Student Management System -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="backend">
+            <article class="modern-project-card">
+              <div class="project-thumb-container">
+                <img src="assets/images/student-system.jpg" alt="Student Management System Dashboard Mockup" class="project-thumb-img" loading="lazy">
+                <div class="project-card-overlay">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="Live Demo">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="View Source on GitHub">
+                    <i class="bi bi-github"></i>
+                  </a>
                 </div>
+                <span class="card-status-badge badge-database">
+                  <i class="bi bi-database"></i> Django + SQL
+                </span>
               </div>
-              <div class="project-body">
-                <div class="project-header-row">
-                  <h3>Student Management System</h3>
-                  <span class="project-badge">Database</span>
+
+              <div class="project-card-body">
+                <div class="project-title-row">
+                  <h3 class="project-card-title">Student Management System</h3>
+                  <span class="project-tech-category">Database</span>
                 </div>
-                <p>A database-driven application for managing and organizing student information using Django and SQL-based backend logic.</p>
-                <ul class="project-tech">
-                  <li>Python</li><li>Django</li><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>SQL</li>
+                <p class="project-card-description">
+                  A database-driven web application to manage and organize student records, course enrollments, and academic performance with Django ORM and SQL.
+                </p>
+
+                <!-- Architectural Highlights from CV -->
+                <ul class="project-features-list">
+                  <li><i class="bi bi-check2"></i> Relational database schema with SQL indexing &amp; CRUD</li>
+                  <li><i class="bi bi-check2"></i> Django ORM backend logic &amp; administrative controls</li>
+                  <li><i class="bi bi-check2"></i> Interactive UI built with HTML5, CSS3, and JavaScript</li>
                 </ul>
-                <div class="project-links">
-                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-hero">
+
+                <div class="project-tech-tags">
+                  <span>Python</span>
+                  <span>Django</span>
+                  <span>SQL</span>
+                  <span>MySQL</span>
+                  <span>JavaScript</span>
+                </div>
+
+                <div class="project-card-actions">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-demo">
+                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-github">
                     <i class="bi bi-github" aria-hidden="true"></i> GitHub
                   </a>
+                  <button type="button" class="btn btn-sm btn-project-details project-detail-trigger" data-project="student" title="View Architecture Details">
+                    <i class="bi bi-info-circle"></i> Details
+                  </button>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="col-md-6 col-lg-4 project-item" data-category="other">
-            <article class="project-card">
-              <div class="project-thumb project-thumb-three" aria-hidden="true">
-                <div class="project-thumb-overlay">
-                  <span>Grammar Assistant</span>
+          <!-- PROJECT 3: Grammar Assistant -->
+          <div class="col-lg-4 col-md-6 project-item" data-category="ai">
+            <article class="modern-project-card">
+              <div class="project-thumb-container">
+                <img src="assets/images/grammar-assistant.jpg" alt="Grammar Assistant AI App Mockup" class="project-thumb-img" loading="lazy">
+                <div class="project-card-overlay">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="Live Demo">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-overlay-action" title="View Source on GitHub">
+                    <i class="bi bi-github"></i>
+                  </a>
                 </div>
+                <span class="card-status-badge badge-ai">
+                  <i class="bi bi-stars"></i> Gemini AI
+                </span>
               </div>
-              <div class="project-body">
-                <div class="project-header-row">
-                  <h3>Grammar Assistant</h3>
-                  <span class="project-badge">AI Utility</span>
+
+              <div class="project-card-body">
+                <div class="project-title-row">
+                  <h3 class="project-card-title">Grammar Assistant</h3>
+                  <span class="project-tech-category">AI Utility</span>
                 </div>
-                <p>A web-based grammar correction tool that analyzes text and helps users improve their writing with Gemini API integration.</p>
-                <ul class="project-tech">
-                  <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Gemini API</li>
+                <p class="project-card-description">
+                  An intelligent web application that identifies grammatical errors and generates instant corrections, style feedback, and clarity metrics via the Google Gemini API.
+                </p>
+
+                <!-- Architectural Highlights from CV -->
+                <ul class="project-features-list">
+                  <li><i class="bi bi-check2"></i> Google Gemini API integration with prompt optimization</li>
+                  <li><i class="bi bi-check2"></i> JavaScript-based asynchronous API requests &amp; live diff</li>
+                  <li><i class="bi bi-check2"></i> Responsive, clean interface using HTML5, CSS3, &amp; JS</li>
                 </ul>
-                <div class="project-links">
-                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-hero">
+
+                <div class="project-tech-tags">
+                  <span>JavaScript</span>
+                  <span>Gemini API</span>
+                  <span>REST API</span>
+                  <span>CSS3</span>
+                  <span>HTML5</span>
+                </div>
+
+                <div class="project-card-actions">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-demo">
+                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-project-github">
                     <i class="bi bi-github" aria-hidden="true"></i> GitHub
                   </a>
+                  <button type="button" class="btn btn-sm btn-project-details project-detail-trigger" data-project="grammar" title="View Architecture Details">
+                    <i class="bi bi-info-circle"></i> Details
+                  </button>
                 </div>
               </div>
             </article>
@@ -411,88 +835,276 @@
 
         </div>
 
-        <p class="projects-empty d-none" id="projectsEmpty">No projects in this category yet.</p>
+        <p class="projects-empty d-none" id="projectsEmpty">
+          <i class="bi bi-search"></i> No projects in this category yet.
+        </p>
       </div>
     </section>
 
-    <!-- ============ EDUCATION ============ -->
-    <section id="education" class="section education-section reveal">
-      <div class="container">
-        <p class="section-eyebrow text-center">Education</p>
-        <h2 class="section-title text-center">Academic Background</h2>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-card">
-              <h3>Bachelor of Technology (B.Tech) in Computer Science &amp; Engineering</h3>
-              <p class="timeline-meta">Siliguri Institute of Technology, Siliguri, West Bengal</p>
-              <p class="timeline-meta">2024 – 2027</p>
-              <p class="section-text">
-                Focused on computer science fundamentals, software development, and applied engineering concepts in data structures,
-                programming, and system design.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-card">
-              <h3>Diploma in Computer Science &amp; Technology</h3>
-              <p class="timeline-meta">Siliguri Government Polytechnic, Siliguri, West Bengal</p>
-              <p class="timeline-meta">2021 – 2024</p>
-              <p class="section-text">
-                Built a strong base in core programming, software systems, and practical computing concepts while preparing for advanced study.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ EXPERIENCE ============ -->
+    <!-- ============ EXPERIENCE & EDUCATION (Interactive Journey) ============ -->
     <section id="experience" class="section experience-section reveal">
       <div class="container">
-        <div class="experience-panel">
-          <i class="bi bi-rocket-takeoff experience-icon" aria-hidden="true"></i>
-          <h2 class="section-title">Experience</h2>
-          <p class="section-text mx-auto">
-            <strong>Full Stack Development Intern — CodTech IT Solutions</strong><br>
-            <span class="timeline-meta">Nov 2025 – Dec 2025</span>
+        <div class="section-header text-center">
+          <p class="section-eyebrow"><i class="bi bi-clock-history"></i> Career Path</p>
+          <h2 class="section-title">Experience &amp; Education</h2>
+          <p class="section-subtitle">
+            Hands-on software development internship and technical degree coursework.
           </p>
-          <div class="section-text mx-auto text-start mt-3">
-            <ul class="skill-list ps-3">
-              <li>Developed a full-stack real-time chat application with secure authentication and real-time messaging.</li>
-              <li>Implemented frontend and backend features for authentication, real-time communication, database operations, and application functionality.</li>
-              <li>Applied REST API development, database management, debugging, testing, and problem-solving skills during project delivery.</li>
-            </ul>
+        </div>
+
+        <!-- Interactive Journey Segmented Switcher -->
+        <div class="journey-switch-container">
+          <div class="journey-switcher" role="tablist">
+            <button class="journey-tab active" id="tabExpBtn" data-pane="expPane" role="tab" aria-selected="true">
+              <i class="bi bi-briefcase-fill"></i>
+              <span>Experience (2)</span>
+            </button>
+            <button class="journey-tab" id="tabEduBtn" data-pane="eduPane" role="tab" aria-selected="false">
+              <i class="bi bi-mortarboard-fill"></i>
+              <span>Education (2)</span>
+            </button>
           </div>
-          <a href="#contact" class="btn btn-outline-hero mt-4">Get in Touch</a>
+        </div>
+
+        <!-- Journey Content Container -->
+        <div class="journey-content-wrapper mt-4">
+
+          <!-- Pane 1: Experience -->
+          <div class="journey-pane active" id="expPane">
+            <div class="timeline-v2">
+
+              <!-- Experience Item 1: AAI Bagdogra Airport -->
+              <div class="timeline-v2-item">
+                <div class="timeline-v2-node">
+                  <i class="bi bi-broadcast-pin"></i>
+                </div>
+                <div class="timeline-v2-card">
+                  <div class="timeline-header-block">
+                    <div>
+                      <span class="timeline-badge-internship">Technical Training</span>
+                      <h3 class="timeline-role">CNS Trainee</h3>
+                      <h4 class="timeline-company">Airports Authority of India (AAI), Bagdogra Airport</h4>
+                    </div>
+                    <div class="timeline-date-badge">
+                      <i class="bi bi-calendar3"></i> 7 Sep 2026 – 6 Oct 2026
+                    </div>
+                  </div>
+
+                  <p class="timeline-summary">
+                    Completed intensive technical training in Communication, Navigation and Surveillance (CNS) systems, aviation IT infrastructure, and airport operations.
+                  </p>
+
+                  <ul class="timeline-bullet-points">
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>Airport Surveillance &amp; Navigation:</strong> Studied airport communication, navigation, and surveillance systems including VHF communication and GAGAN-related technical systems.</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>IP Networking &amp; Cabling:</strong> Gained technical exposure to IP networking, TCP/IP, IP addressing, Ethernet cabling, and network cable testing.</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>Airport Display &amp; Security Systems:</strong> Explored Flight Information Display Systems (FIDS), Central Information Display Systems (CIDS), IP-based CCTV, EPABX, and passenger announcement systems.</span>
+                    </li>
+                  </ul>
+
+                  <div class="timeline-tech-stack">
+                    <span>TCP/IP</span>
+                    <span>IP Networking</span>
+                    <span>Ethernet Cabling</span>
+                    <span>VHF Communication</span>
+                    <span>IP-CCTV</span>
+                    <span>Airport IT Systems</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience Item 2: CodTech -->
+              <div class="timeline-v2-item">
+                <div class="timeline-v2-node">
+                  <i class="bi bi-rocket-takeoff-fill"></i>
+                </div>
+                <div class="timeline-v2-card">
+                  <div class="timeline-header-block">
+                    <div>
+                      <span class="timeline-badge-internship">Virtual Internship</span>
+                      <h3 class="timeline-role">Full Stack Development Intern</h3>
+                      <h4 class="timeline-company">CodTech IT Solutions</h4>
+                    </div>
+                    <div class="timeline-date-badge">
+                      <i class="bi bi-calendar3"></i> Nov 2025 – Dec 2025
+                    </div>
+                  </div>
+
+                  <p class="timeline-summary">
+                    Engaged in virtual software development internship focused on designing, coding, testing, and shipping full-stack real-time web products.
+                  </p>
+
+                  <ul class="timeline-bullet-points">
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>Real-Time Messaging Architecture:</strong> Engineered an end-to-end full-stack chat application (Talksy) incorporating WebSockets via Socket.IO with bi-directional event handlers.</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>Authentication &amp; Security:</strong> Implemented secure authentication flows utilizing JSON Web Tokens (JWT) stored in HTTP-only cookies and password salting with bcrypt.</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>API &amp; Database Integration:</strong> Built RESTful backend endpoints in Node.js/Express and designed MongoDB document schemas for user profiles and message history.</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-arrow-right-short text-accent"></i>
+                      <span><strong>Testing &amp; Debugging:</strong> Validated network requests, edge case handling, and responsive cross-browser layouts.</span>
+                    </li>
+                  </ul>
+
+                  <div class="timeline-tech-stack">
+                    <span>React.js</span>
+                    <span>Node.js</span>
+                    <span>Express.js</span>
+                    <span>MongoDB</span>
+                    <span>Socket.IO</span>
+                    <span>REST APIs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 2: Education -->
+          <div class="journey-pane d-none" id="eduPane">
+            <div class="timeline-v2">
+
+              <!-- Education Item 1 -->
+              <div class="timeline-v2-item">
+                <div class="timeline-v2-node">
+                  <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div class="timeline-v2-card">
+                  <div class="timeline-header-block">
+                    <div>
+                      <span class="timeline-badge-degree">Undergraduate</span>
+                      <h3 class="timeline-role">B.Tech in Computer Science &amp; Engineering</h3>
+                      <h4 class="timeline-company">Siliguri Institute of Technology</h4>
+                    </div>
+                    <div class="timeline-date-badge">
+                      <i class="bi bi-calendar3"></i> 2024 – 2027
+                    </div>
+                  </div>
+                  <p class="timeline-location">
+                    <i class="bi bi-geo-alt"></i> Siliguri, West Bengal, India
+                  </p>
+                  <p class="timeline-summary">
+                    In-depth theoretical and practical study of software engineering principles, algorithm design, distributed computing, database management systems, and system architecture.
+                  </p>
+                  <div class="coursework-tags">
+                    <span>Data Structures &amp; Algorithms</span>
+                    <span>Database Management Systems (DBMS)</span>
+                    <span>Operating Systems</span>
+                    <span>Object-Oriented Programming (OOP)</span>
+                    <span>Software Engineering</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Education Item 2 -->
+              <div class="timeline-v2-item">
+                <div class="timeline-v2-node">
+                  <i class="bi bi-award-fill"></i>
+                </div>
+                <div class="timeline-v2-card">
+                  <div class="timeline-header-block">
+                    <div>
+                      <span class="timeline-badge-degree">Diploma</span>
+                      <h3 class="timeline-role">Diploma in Computer Science &amp; Technology</h3>
+                      <h4 class="timeline-company">Siliguri Government Polytechnic</h4>
+                    </div>
+                    <div class="timeline-date-badge">
+                      <i class="bi bi-calendar3"></i> 2021 – 2024
+                    </div>
+                  </div>
+                  <p class="timeline-location">
+                    <i class="bi bi-geo-alt"></i> Siliguri, West Bengal, India
+                  </p>
+                  <p class="timeline-summary">
+                    Built a solid foundational core in computer programming, C and Java language fundamentals, relational databases, web standards, and hardware/software interfacing.
+                  </p>
+                  <div class="coursework-tags">
+                    <span>C &amp; Java Programming</span>
+                    <span>Web Development Basics</span>
+                    <span>Computer Architecture</span>
+                    <span>SQL &amp; Relational DBs</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ============ RESUME ============ -->
+    <!-- Hidden anchor for smooth education navigation -->
+    <div id="education" style="position: relative; top: -100px; visibility: hidden;"></div>
+
+    <!-- ============ RESUME SHOWCASE ============ -->
     <section id="resume" class="section resume-section reveal">
       <div class="container">
-        <div class="resume-panel">
-          <div class="resume-panel-text">
-            <p class="section-eyebrow">Resume</p>
-            <h2 class="section-title">Interested in my background?</h2>
-            <p class="section-text">
-              Download my resume to learn more about my education, technical skills, internship experience, and project work.
-            </p>
-            <div class="hero-actions">
-              <a href="assets/resume.pdf" class="btn btn-primary btn-hero" download>
-                <i class="bi bi-download" aria-hidden="true"></i> Download Resume
-              </a>
-              <a href="assets/resume.pdf" class="btn btn-outline-hero" target="_blank" rel="noopener noreferrer">
-                View Resume
-              </a>
+        <div class="resume-glass-card">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-8">
+              <div class="resume-card-badge">
+                <i class="bi bi-file-earmark-check-fill"></i> Verified Curriculum Vitae
+              </div>
+              <h2 class="resume-card-title">Looking for detailed background info?</h2>
+              <p class="resume-card-text">
+                Review my complete technical background, engineering projects, internship experience at CodTech, coursework credentials, and contact details in my resume.
+              </p>
+              <div class="resume-highlights-row">
+                <div class="r-check"><i class="bi bi-check-circle-fill"></i> B.Tech CSE (2024–2027)</div>
+                <div class="r-check"><i class="bi bi-check-circle-fill"></i> CodTech IT Solutions Intern</div>
+                <div class="r-check"><i class="bi bi-check-circle-fill"></i> MERN &amp; Django Specialist</div>
+              </div>
+              <div class="resume-card-actions mt-4">
+                <a href="assets/resume.pdf" class="btn btn-primary-glow btn-hero" download="Miraj_Miah_Resume.pdf">
+                  <i class="bi bi-download"></i>
+                  <span>Download Resume (PDF)</span>
+                </a>
+                <a href="assets/resume.pdf" class="btn btn-glass-hero" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                  <span>Preview in New Tab</span>
+                </a>
+              </div>
             </div>
-          </div>
-          <div class="resume-panel-icon" aria-hidden="true">
-            <i class="bi bi-file-earmark-person"></i>
+
+            <div class="col-lg-4 text-center">
+              <div class="resume-preview-art">
+                <div class="resume-paper-graphic">
+                  <div class="paper-header-mock">
+                    <div class="mock-avatar"></div>
+                    <div class="mock-lines">
+                      <span class="mock-line w-75"></span>
+                      <span class="mock-line w-50"></span>
+                    </div>
+                  </div>
+                  <div class="paper-body-mock">
+                    <span class="mock-bar"></span>
+                    <span class="mock-line w-100"></span>
+                    <span class="mock-line w-90"></span>
+                    <span class="mock-line w-60"></span>
+                    <span class="mock-bar mt-2"></span>
+                    <span class="mock-line w-100"></span>
+                    <span class="mock-line w-80"></span>
+                  </div>
+                  <div class="paper-badge-tag">
+                    <i class="bi bi-filetype-pdf"></i> PDF
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -501,47 +1113,195 @@
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="section contact-section reveal">
       <div class="container">
-        <p class="section-eyebrow text-center">Contact</p>
-        <h2 class="section-title text-center">Let's Build Something Together</h2>
-        <p class="section-text text-center mx-auto section-intro">
-          I’m open to internships, collaborative projects, and opportunities where I can contribute to meaningful product development.
-        </p>
+        <div class="section-header text-center">
+          <p class="section-eyebrow"><i class="bi bi-chat-dots-fill"></i> Get in Touch</p>
+          <h2 class="section-title">Let's Build Something Exceptional</h2>
+          <p class="section-subtitle">
+            Have an internship role, project idea, or full-time opportunity? My inbox is always open.
+          </p>
+        </div>
 
-        <div class="row g-5 mt-2 justify-content-center">
-          <div class="col-lg-10">
-            <form class="contact-form" id="contactForm" method="POST" action="https://formsubmit.co/ajax/mirajmiah322173@gmail.com" novalidate>
-              <input type="hidden" name="_subject" value="New portfolio contact message">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="https://mirajmiah.github.io/portfolio/">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="contactName" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="contactName" name="name" required>
-                  <div class="invalid-feedback">Please enter your name.</div>
+        <div class="row g-4 mt-2 justify-content-center">
+
+          <!-- Left Info Column -->
+          <div class="col-lg-5">
+            <div class="contact-info-panel">
+              <h3 class="panel-heading">Direct Channels</h3>
+              <p class="panel-sub">
+                Feel free to email me directly or connect on LinkedIn and GitHub. I typically reply within 24 hours.
+              </p>
+
+              <!-- Email Card with 1-click Copy -->
+              <div class="contact-channel-card">
+                <div class="channel-icon-box">
+                  <i class="bi bi-envelope-at-fill"></i>
                 </div>
-                <div class="col-md-6">
-                  <label for="contactEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="contactEmail" name="email" required>
-                  <div class="invalid-feedback">Please enter a valid email.</div>
+                <div class="channel-details">
+                  <span class="channel-label">Email Address</span>
+                  <a href="mailto:mirajmiah322173@gmail.com" class="channel-link">mirajmiah322173@gmail.com</a>
                 </div>
-                <div class="col-12">
-                  <label for="contactSubject" class="form-label">Subject</label>
-                  <input type="text" class="form-control" id="contactSubject" name="subject" required>
-                  <div class="invalid-feedback">Please enter a subject.</div>
+                <button type="button" class="btn-channel-action" id="contactCopyEmailBtn" title="Copy email">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </div>
+
+              <!-- Phone / WhatsApp Card with 1-click Copy -->
+              <div class="contact-channel-card">
+                <div class="channel-icon-box text-phone">
+                  <i class="bi bi-telephone-fill"></i>
                 </div>
-                <div class="col-12">
-                  <label for="contactMessage" class="form-label">Message</label>
-                  <textarea class="form-control" id="contactMessage" name="message" rows="5" required></textarea>
-                  <div class="invalid-feedback">Please enter a message.</div>
+                <div class="channel-details">
+                  <span class="channel-label">Phone / WhatsApp</span>
+                  <a href="tel:+918167742375" class="channel-link">+91 8167742375</a>
                 </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-hero">Send Message</button>
-                  <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                <button type="button" class="btn-channel-action" id="contactCopyPhoneBtn" title="Copy phone number">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </div>
+
+              <!-- LinkedIn Card -->
+              <div class="contact-channel-card">
+                <div class="channel-icon-box text-linkedin">
+                  <i class="bi bi-linkedin"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" class="channel-link">
+                    in/miraj-miah-3b30a82a2
+                  </a>
+                </div>
+                <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" class="btn-channel-action" title="Visit LinkedIn">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+
+              <!-- GitHub Card -->
+              <div class="contact-channel-card">
+                <div class="channel-icon-box text-github">
+                  <i class="bi bi-github"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">GitHub</span>
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="channel-link">
+                    github.com/mirajmiah
+                  </a>
+                </div>
+                <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-channel-action" title="Visit GitHub">
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+
+              <!-- Location Card -->
+              <div class="contact-channel-card">
+                <div class="channel-icon-box text-location">
+                  <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">Location</span>
+                  <span class="channel-value">Siliguri, West Bengal, India</span>
                 </div>
               </div>
-            </form>
+
+              <!-- Availability Status Card -->
+              <div class="contact-availability-banner">
+                <div class="avail-dot"></div>
+                <div>
+                  <strong>Currently Available</strong>
+                  <p class="mb-0">Ready for Summer/Fall Internships &amp; Junior Dev Roles</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Right Form Column -->
+          <div class="col-lg-7">
+            <div class="contact-form-panel">
+              <h3 class="panel-heading">Send a Direct Message</h3>
+              <p class="panel-sub">
+                Drop your message below and I will get back to you shortly.
+              </p>
+
+              <!-- Quick Subject Chips -->
+              <div class="subject-chips-group mb-3">
+                <span class="chips-label">Inquiring about:</span>
+                <div class="chips-list">
+                  <button type="button" class="subject-chip active" data-subject="Internship Opportunity">💼 Internship</button>
+                  <button type="button" class="subject-chip" data-subject="Full-time Role">🚀 Full-time Role</button>
+                  <button type="button" class="subject-chip" data-subject="Project Collaboration">🤝 Collaboration</button>
+                  <button type="button" class="subject-chip" data-subject="General Inquiry">💬 General</button>
+                </div>
+              </div>
+
+              <form class="modern-contact-form" id="contactForm" method="POST" action="https://formsubmit.co/ajax/mirajmiah322173@gmail.com" novalidate>
+                <input type="hidden" name="_subject" id="hiddenFormSubject" value="New portfolio contact message: Internship Opportunity">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label for="contactName">Your Name <span class="text-danger">*</span></label>
+                      <div class="input-with-icon">
+                        <i class="bi bi-person"></i>
+                        <input type="text" class="form-control-custom" id="contactName" name="name" placeholder="e.g. Alex Smith" required>
+                      </div>
+                      <div class="form-feedback invalid-feedback">Please enter your name.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label for="contactEmail">Your Email <span class="text-danger">*</span></label>
+                      <div class="input-with-icon">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" class="form-control-custom" id="contactEmail" name="email" placeholder="alex@company.com" required>
+                      </div>
+                      <div class="form-feedback invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <label for="contactSubject">Subject <span class="text-danger">*</span></label>
+                      <div class="input-with-icon">
+                        <i class="bi bi-chat-left-text"></i>
+                        <input type="text" class="form-control-custom" id="contactSubject" name="subject" value="Internship Opportunity" required>
+                      </div>
+                      <div class="form-feedback invalid-feedback">Please provide a subject.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <label for="contactMessage">Message <span class="text-danger">*</span></label>
+                        <span class="char-counter" id="charCounter">0 / 800</span>
+                      </div>
+                      <div class="input-with-icon align-items-start">
+                        <i class="bi bi-textarea-t mt-3"></i>
+                        <textarea class="form-control-custom" id="contactMessage" name="message" rows="5" maxlength="800" placeholder="Hi Miraj, I came across your portfolio and wanted to discuss an opportunity..." required></textarea>
+                      </div>
+                      <div class="form-feedback invalid-feedback">Please enter your message.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary-glow btn-submit-message w-100" id="submitFormBtn">
+                      <span class="btn-text">
+                        <i class="bi bi-send-fill me-1"></i> Send Message
+                      </span>
+                      <span class="btn-spinner d-none">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Sending...
+                      </span>
+                    </button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -551,68 +1311,134 @@
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="container">
-      <div class="row gy-4 align-items-start">
-        <div class="col-md-4">
-          <a class="footer-brand" href="#home">Miraj<span class="brand-accent">Miah</span></a>
-          <p class="footer-tagline">Building, learning, and shipping practical web products.</p>
-        </div>
+      <div class="footer-top-row">
+        <div class="row gy-4 align-items-start">
+          <div class="col-lg-5 col-md-6">
+            <a class="footer-brand" href="#home">
+              <span class="brand-code-symbol">&lt;</span>Miraj<span class="brand-accent">Miah</span><span class="brand-code-symbol">/&gt;</span>
+            </a>
+            <p class="footer-tagline">
+              Computer Science &amp; Engineering Student &amp; Full Stack Developer. Dedicated to clean architecture, high-speed real-time web applications, and intuitive user experiences.
+            </p>
+            <div class="footer-badge-pill">
+              <span class="footer-dot"></span> B.Tech CSE • Class of 2027
+            </div>
+          </div>
 
-        <div class="col-md-4">
-          <p class="footer-heading">Navigate</p>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+          <div class="col-lg-3 col-md-3 col-6">
+            <p class="footer-heading">Navigation</p>
+            <ul class="footer-links">
+              <li><a href="#home"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="#about"><i class="bi bi-chevron-right"></i> About</a></li>
+              <li><a href="#skills"><i class="bi bi-chevron-right"></i> Skills</a></li>
+              <li><a href="#projects"><i class="bi bi-chevron-right"></i> Projects</a></li>
+              <li><a href="#experience"><i class="bi bi-chevron-right"></i> Experience</a></li>
+              <li><a href="#resume"><i class="bi bi-chevron-right"></i> Resume</a></li>
+            </ul>
+          </div>
 
-        <div class="col-md-4">
-          <p class="footer-heading">Connect</p>
-          <ul class="footer-socials">
-            <li>
-              <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                <i class="bi bi-github" aria-hidden="true"></i> GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-                <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/hashtag_speedy?stkn=N244bWN4bGg1aG1v" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
-                <i class="bi bi-instagram" aria-hidden="true"></i> Instagram
-              </a>
-            </li>
-          </ul>
+          <div class="col-lg-4 col-md-3 col-6">
+            <p class="footer-heading">Connect &amp; Social</p>
+            <ul class="footer-socials">
+              <li>
+                <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-github" aria-hidden="true"></i> GitHub / mirajmiah
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn Profile
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/hashtag_speedy?stkn=N244bWN4bGg1aG1v" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-instagram" aria-hidden="true"></i> Instagram
+                </a>
+              </li>
+              <li>
+                <a href="mailto:mirajmiah322173@gmail.com">
+                  <i class="bi bi-envelope-fill" aria-hidden="true"></i> mirajmiah322173@gmail.com
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <hr class="footer-divider">
-      <p class="footer-copyright">&copy; 2026 Miraj Miah. All rights reserved.</p>
+
+      <div class="footer-bottom-row">
+        <p class="footer-copyright">
+          &copy; <span id="currentYear">2026</span> Miraj Miah. Built with modern Vanilla JS &amp; CSS.
+        </p>
+        <p class="footer-built-with">
+          Designed for performance &amp; clean aesthetics
+        </p>
+      </div>
     </div>
   </footer>
 
+  <!-- Contact Success Modal -->
   <div class="contact-modal" id="contactSuccessModal" aria-hidden="true">
     <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="contactSuccessTitle">
-      <button class="contact-modal-close" id="contactSuccessClose" aria-label="Close">×</button>
-      <div class="contact-modal-icon">
+      <button class="contact-modal-close" id="contactSuccessClose" aria-label="Close dialog">&times;</button>
+      <div class="contact-modal-icon-glow">
         <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
       </div>
-      <h3 id="contactSuccessTitle">Message Sent Successfully</h3>
-      <p>Thank you for reaching out. We will contact you soon.</p>
-      <button class="btn btn-primary btn-hero contact-modal-button" id="contactSuccessButton">Back to Home</button>
+      <h3 id="contactSuccessTitle">Message Dispatched!</h3>
+      <p>Thank you for reaching out, <span id="successSenderName">there</span>. I have received your message and will reply to your email shortly.</p>
+      <button class="btn btn-primary-glow contact-modal-button" id="contactSuccessButton">Return to Portfolio</button>
     </div>
   </div>
 
-  <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="bi bi-arrow-up" aria-hidden="true"></i>
-  </a>
+  <!-- Project Details Modal -->
+  <div class="project-modal" id="projectDetailsModal" aria-hidden="true">
+    <div class="project-modal-backdrop" id="projectModalBackdrop"></div>
+    <div class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button class="project-modal-close" id="projectModalClose" aria-label="Close dialog">&times;</button>
+      <div class="project-modal-header">
+        <span class="project-modal-badge" id="modalProjectBadge">Full Stack</span>
+        <h3 id="projectModalTitle">Project Title</h3>
+      </div>
+      <div class="project-modal-img-wrapper">
+        <img src="" alt="Project Preview" id="modalProjectImg" class="project-modal-img">
+      </div>
+      <div class="project-modal-body">
+        <p id="modalProjectDescription"></p>
+        <h5 class="modal-section-title">Technical Architecture &amp; Key Highlights:</h5>
+        <ul id="modalProjectHighlights" class="modal-highlights-list"></ul>
+        <h5 class="modal-section-title mt-3">Technologies:</h5>
+        <div id="modalProjectTech" class="modal-tech-pills"></div>
+      </div>
+      <div class="project-modal-footer">
+        <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-primary-glow" id="modalProjectDemo">
+          <i class="bi bi-box-arrow-up-right"></i> Live Demo
+        </a>
+        <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn btn-glass-hero" id="modalProjectGithub">
+          <i class="bi bi-github"></i> GitHub Repo
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <!-- Bootstrap Bundle (includes Popper, needed for the mobile menu) -->
+  <!-- Copy Toast Notification -->
+  <div class="toast-notification" id="copyToast" role="alert" aria-live="assertive">
+    <i class="bi bi-check-circle-fill"></i>
+    <span id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <!-- Back to Top with Circular Scroll Progress Ring -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Scroll to top">
+    <svg class="progress-ring" width="46" height="46">
+      <circle class="progress-ring-bg" stroke="rgba(255, 255, 255, 0.1)" stroke-width="3" fill="transparent" r="20" cx="23" cy="23" />
+      <circle class="progress-ring-circle" id="progressRingCircle" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="transparent" r="20" cx="23" cy="23" />
+    </svg>
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Bootstrap Bundle (for toggler) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Modern Script -->
   <script src="js/script.js"></script>
 </body>
 </html>
