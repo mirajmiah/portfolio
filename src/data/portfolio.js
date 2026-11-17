@@ -172,42 +172,36 @@ export const personalInfo = {
   experience: [
     {
       position: "CNS Trainee",
-      organization: "Airports Authority of India (AAI)",
+      organization: "Airports Authority of India (AAI), Bagdogra Airport",
       location: "Bagdogra Airport",
-      duration: "07 September 2026 – 06 October 2026",
+      duration: "7 Sep 2026 – 6 Oct 2026",
       type: "Internship Training",
-      description:
-        "Completed a one-month internship as a CNS Trainee, gaining practical exposure to airport communication, navigation, surveillance, and networking infrastructure.",
+      points: [
+        "Studied airport communication, navigation, and surveillance systems, including VHF communication and GAGAN related technical systems.",
+        "Gained technical exposure to IP networking, TCP/IP, IP addressing, Ethernet cabling, and cable testing.",
+        "Explored airport systems including Flight Information Display System (FIDS), Central Information Display System (CIDS), IP-based CCTV, EPABX, and UPS.",
+        "Learned the working principles of passenger announcement and airport security screening systems."
+      ],
       exposures: [
         {
-          name: "FIDS",
-          fullName: "Flight Information Display System",
-          desc: "Real-time departure/arrival information broadcasting and terminal display synchronization."
+          name: "VHF & GAGAN CNS Systems",
+          fullName: "Communication, Navigation & Surveillance",
+          desc: "Studied airport communication, navigation, and surveillance systems, including VHF communication and GAGAN related technical systems."
         },
         {
-          name: "CCTV",
-          fullName: "Closed Circuit Television",
-          desc: "High-security surveillance camera topologies, IP video feeds, and monitoring nodes."
+          name: "IP Networking & Cabling",
+          fullName: "Network Engineering",
+          desc: "Gained technical exposure to IP networking, TCP/IP, IP addressing, Ethernet cabling, and cable testing."
         },
         {
-          name: "PA System",
-          fullName: "Public Address System",
-          desc: "Multi-zone audio routing and critical passenger announcement infrastructure."
+          name: "FIDS, CIDS, CCTV, EPABX & UPS",
+          fullName: "Airport Infrastructure",
+          desc: "Explored airport systems including Flight Information Display System (FIDS), Central Information Display System (CIDS), IP-based CCTV, EPABX, and UPS."
         },
         {
-          name: "EPABX",
-          fullName: "Electronic Private Automatic Branch Exchange",
-          desc: "Internal telecommunications switching, trunk lines, and airport intercom networks."
-        },
-        {
-          name: "CAT6 Networking",
-          fullName: "Structured LAN Cabling",
-          desc: "Terminal network distribution, high-bandwidth cabling, patch panels, and switch trunking."
-        },
-        {
-          name: "Fibre-Optic Communication",
-          fullName: "Optical Network Backbone",
-          desc: "High-speed backbone connectivity supporting flight operations, data integrity, and low-latency transfer."
+          name: "PA & Security Systems",
+          fullName: "Screening & Announcement",
+          desc: "Learned the working principles of passenger announcement and airport security screening systems."
         }
       ]
     }

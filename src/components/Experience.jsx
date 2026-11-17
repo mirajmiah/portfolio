@@ -1,19 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Plane, Network, Radio, Monitor, ShieldCheck, PhoneCall, Calendar, MapPin } from 'lucide-react';
+import { Plane, Calendar, MapPin, CheckCircle2, Radio, Network, Monitor, ShieldCheck } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 
 export default function Experience() {
   const exp = personalInfo.experience[0];
 
-  const exposureIcons = {
-    FIDS: Monitor,
-    CCTV: ShieldCheck,
-    'PA System': Radio,
-    EPABX: PhoneCall,
-    'CAT6 Networking': Network,
-    'Fibre-Optic Communication': Network,
-  };
+  const exposureIcons = [Radio, Network, Monitor, ShieldCheck];
 
   return (
     <section id="experience" className="py-24 relative">
@@ -24,19 +17,13 @@ export default function Experience() {
             Professional Growth
           </h2>
           <p className="text-3xl sm:text-4xl font-extrabold tracking-tight font-sans dark:text-white light:text-slate-900">
-            Experience & Professional Journey
+            Experience &amp; Professional Journey
           </p>
           <div className="mt-3 w-12 h-1 bg-indigo-500 rounded-full mx-auto" />
         </div>
 
         {/* Timeline Container */}
         <div className="max-w-4xl mx-auto relative">
-          {/* Vertical central line */}
-          <div
-            className="absolute left-4 sm:left-1/2 top-4 bottom-4 w-0.5 -translate-x-1/2 dark:bg-white/10 light:bg-slate-200 hidden sm:block"
-            aria-hidden="true"
-          />
-
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -44,13 +31,8 @@ export default function Experience() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            {/* Center Timeline Node Marker */}
-            <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 top-8 w-10 h-10 rounded-full border-4 dark:border-dark-bg light:border-light-bg bg-indigo-600 items-center justify-center text-white shadow-md z-10">
-              <Plane className="w-4 h-4" />
-            </div>
-
             {/* Experience Card */}
-            <div className="sm:w-[calc(100%-40px)] mx-auto p-6 sm:p-8 rounded-2xl border dark:border-white/10 dark:bg-dark-card light:border-slate-200 light:bg-white shadow-lg space-y-6">
+            <div className="p-6 sm:p-8 rounded-2xl border dark:border-white/10 dark:bg-dark-card light:border-slate-200 light:bg-white shadow-lg space-y-6">
               {/* Header Info */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b dark:border-white/10 light:border-slate-200">
                 <div>
@@ -80,40 +62,24 @@ export default function Experience() {
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-sm sm:text-base leading-relaxed dark:text-slate-300 light:text-slate-600">
-                {exp.description}
-              </p>
-
-              {/* Technical Exposure Grid */}
-              <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider font-bold mb-4 dark:text-indigo-400 light:text-indigo-600">
-                  Areas of Practical Technical Exposure
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  {exp.exposures.map((item) => {
-                    const Icon = exposureIcons[item.name] || Network;
-                    return (
-                      <div
-                        key={item.name}
-                        className="p-3.5 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] light:border-slate-100 light:bg-slate-50/70 space-y-1"
-                      >
-                        <div className="flex items-center gap-2">
-                          <Icon className="w-4 h-4 text-indigo-400 shrink-0" />
-                          <span className="text-xs font-bold font-mono dark:text-slate-200 light:text-slate-800">
-                            {item.name}
-                          </span>
-                          <span className="text-[11px] text-slate-400 font-normal truncate">
-                            &mdash; {item.fullName}
-                          </span>
-                        </div>
-                        <p className="text-xs leading-relaxed dark:text-slate-400 light:text-slate-600 pl-6">
-                          {item.desc}
-                        </p>
+              {/* Technical Exposure Bullet Points */}
+              <div className="space-y-3">
+                {exp.points.map((point, index) => {
+                  const Icon = exposureIcons[index % exposureIcons.length] || CheckCircle2;
+                  return (
+                    <div
+                      key={index}
+                      className="flex items-start gap-3.5 p-4 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] light:border-slate-100 light:bg-slate-50/70"
+                    >
+                      <div className="p-2 rounded-lg dark:bg-indigo-500/10 dark:text-indigo-400 light:bg-indigo-100/60 light:text-indigo-600 mt-0.5 shrink-0">
+                        <Icon className="w-4 h-4" />
                       </div>
-                    );
-                  })}
-                </div>
+                      <p className="text-xs sm:text-sm leading-relaxed dark:text-slate-300 light:text-slate-700">
+                        {point}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>

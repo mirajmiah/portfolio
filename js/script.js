@@ -148,9 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
 <span class="token-keyword">const</span> internshipExperience = {
   <span class="token-property">role</span>: <span class="token-string">"CNS Trainee"</span>,
   <span class="token-property">organization</span>: <span class="token-string">"Airports Authority of India (AAI)"</span>,
-  <span class="token-property">facility</span>: <span class="token-string">"Bagdogra Airport (IXB)"</span>,
-  <span class="token-property">tenure</span>: <span class="token-string">"07 Sep 2026 – 06 Oct 2026"</span>,
-  <span class="token-property">exposure</span>: [<span class="token-string">"FIDS"</span>, <span class="token-string">"CCTV"</span>, <span class="token-string">"PA System"</span>, <span class="token-string">"EPABX"</span>, <span class="token-string">"CAT6"</span>, <span class="token-string">"Fibre Backbone"</span>]
+  <span class="token-property">facility</span>: <span class="token-string">"Bagdogra Airport"</span>,
+  <span class="token-property">tenure</span>: <span class="token-string">"7 Sep 2026 – 6 Oct 2026"</span>,
+  <span class="token-property">domains</span>: [
+    <span class="token-string">"VHF Comm & GAGAN CNS Systems"</span>,
+    <span class="token-string">"IP Networking, TCP/IP & Ethernet"</span>,
+    <span class="token-string">"FIDS, CIDS, CCTV, EPABX & UPS"</span>,
+    <span class="token-string">"Passenger Announcement & Screening"</span>
+  ]
 };
 `
   };
