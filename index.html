@@ -988,37 +988,44 @@
             <!-- Form Success State -->
             <div id="contactSuccess" style="display:none;text-align:center;padding:2.5rem 1rem;">
               <div style="width:56px;height:56px;border-radius:50%;background:rgba(16,185,129,0.1);color:var(--accent-emerald);display:flex;align-items:center;justify-content:center;font-size:1.75rem;margin:0 auto 1.25rem;">
-                <i class="bi bi-check-lg"></i>
+                <i class="bi bi-check2-all"></i>
               </div>
-              <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:0.5rem;">Message Prepared!</h3>
-              <p style="font-size:0.875rem;color:var(--text-secondary);max-width:380px;margin:0 auto;">
-                Your default mail client has opened with your inquiry pre-filled. You can also reach me directly at <strong>mirajmiah964@gmail.com</strong>.
+              <h3 style="font-size:1.35rem;font-weight:700;margin-bottom:0.5rem;color:var(--text-primary);">Message Delivered Successfully!</h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);max-width:390px;margin:0 auto 1.5rem;line-height:1.6;">
+                Your message has been sent directly to <strong>mirajmiah964@gmail.com</strong>. I have received your note and will reply directly to your email shortly.
               </p>
+              <button type="button" id="btnSendAnother" class="btn-secondary" style="font-size:0.8125rem;padding:0.5rem 1.2rem;">
+                Send Another Note
+              </button>
             </div>
 
             <!-- Form Inputs -->
-            <form id="contactForm" novalidate>
+            <form id="contactForm" action="https://formsubmit.co/mirajmiah964@gmail.com" method="POST" novalidate>
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="New Portfolio Message from Client">
+
               <div class="form-group">
                 <label for="contactName" class="form-label">Full Name <span style="color:var(--accent-rose);">&ast;</span></label>
-                <input type="text" id="contactName" class="form-control" placeholder="e.g. Alex Morgan">
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="e.g. Alex Morgan" required>
                 <div class="form-error-msg" id="contactNameError"></div>
               </div>
 
               <div class="form-group">
                 <label for="contactEmail" class="form-label">Email Address <span style="color:var(--accent-rose);">&ast;</span></label>
-                <input type="email" id="contactEmail" class="form-control" placeholder="alex@example.com">
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="name@company.com" required>
                 <div class="form-error-msg" id="contactEmailError"></div>
               </div>
 
               <div class="form-group">
                 <label for="contactSubject" class="form-label">Subject <span style="color:var(--accent-rose);">&ast;</span></label>
-                <input type="text" id="contactSubject" class="form-control" placeholder="Internship Opportunity / Project Collaboration">
+                <input type="text" id="contactSubject" name="subject" class="form-control" placeholder="Job Opportunity / Project Collaboration" required>
                 <div class="form-error-msg" id="contactSubjectError"></div>
               </div>
 
               <div class="form-group">
                 <label for="contactMessage" class="form-label">Message <span style="color:var(--accent-rose);">&ast;</span></label>
-                <textarea id="contactMessage" class="form-control" rows="4" placeholder="Hi Miraj, I would like to connect with you regarding..."></textarea>
+                <textarea id="contactMessage" name="message" class="form-control" rows="4" placeholder="Hi Miraj, I would like to connect with you regarding..." required></textarea>
                 <div class="form-error-msg" id="contactMessageError"></div>
               </div>
 

@@ -31,12 +31,17 @@ export default function Contact() {
     'sit.ac.in'
   ]);
 
+  const FAKE_OR_MASH_DOMAINS = new Set([
+    'mahi.com', 'test.com', 'example.com', 'sample.com', 'fake.com',
+    'testing.com', 'mail.com', 'demo.com', 'foo.com', 'bar.com', 'xyz.com'
+  ]);
+
   const checkEmailSyntaxAndRules = (value) => {
     if (!value) {
       return { ok: false, reason: 'Email address is required to submit.' };
     }
     if (!strictEmailRegex.test(value)) {
-      return { ok: false, reason: 'Please enter a properly formatted email (e.g. name@domain.com).' };
+      return { ok: false, reason: 'Please enter a valid email address (e.g. name@domain.com).' };
     }
 
     const parts = value.split('@');
@@ -56,8 +61,16 @@ export default function Contact() {
       }
     }
 
+    if (FAKE_OR_MASH_DOMAINS.has(domainPart)) {
+      return { ok: false, reason: `The domain "@${domainPart}" is not a recognized email provider. Please enter your real email address.` };
+    }
+
     if (DISPOSABLE_DOMAINS.has(domainPart)) {
       return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    if (/^(.)\1+$/.test(userPart)) {
+      return { ok: false, reason: 'Please enter a genuine, active email address.' };
     }
 
     return { ok: true, domain: domainPart };
@@ -141,8 +154,14 @@ export default function Contact() {
     setVerifyingEmail(true);
 
     const emailCheck = checkEmailSyntaxAndRules(formData.email.trim());
-    const domainVerification = await verifyEmailDomainExists(emailCheck.domain);
+    if (!emailCheck.ok) {
+      setLoading(false);
+      setVerifyingEmail(false);
+      setErrors((prev) => ({ ...prev, email: emailCheck.reason }));
+      return;
+    }
 
+    const domainVerification = await verifyEmailDomainExists(emailCheck.domain);
     setVerifyingEmail(false);
 
     if (!domainVerification.ok) {
@@ -151,27 +170,43 @@ export default function Contact() {
       return;
     }
 
-    // Provide authentic mail client connection
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
+    // Attempt direct real delivery via FormSubmit
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+        }),
+      });
 
-      const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-        `[Portfolio] ${formData.subject}`
-      )}&body=${encodeURIComponent(
-        `Hi Miraj,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
+      if (res.ok) {
+        setLoading(false);
+        setSubmitted(true);
+        return;
+      }
+    } catch (err) {
+      // Fallback to mailto below
+    }
 
-      window.location.href = mailtoLink;
-    }, 700);
-  };
-        `[Portfolio] ${formData.subject}`
-      )}&body=${encodeURIComponent(
-        `Hi Miraj,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
+    // Fallback: If network / adblocker prevented AJAX, launch user mail client with prefilled info
+    setLoading(false);
+    setSubmitted(true);
 
-      window.location.href = mailtoLink;
-    }, 800);
+    const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+      `[Portfolio] ${formData.subject}`
+    )}&body=${encodeURIComponent(
+      `Hi Miraj,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+
+    window.location.href = mailtoLink;
   };
 
   const handleCopyEmail = () => {

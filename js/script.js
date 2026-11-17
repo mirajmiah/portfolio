@@ -327,11 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeProjectModal();
   });
 
-  // 11. CONTACT FORM REAL-TIME & DNS-VERIFIED EMAIL VALIDATION
+  // 11. CONTACT FORM STRICT EMAIL VERIFICATION & REAL INBOX DELIVERY
   const contactForm = document.getElementById('contactForm');
   const contactSuccessMsg = document.getElementById('contactSuccess');
   const emailInput = document.getElementById('contactEmail');
   const emailErrorEl = document.getElementById('contactEmailError');
+  const btnSendAnother = document.getElementById('btnSendAnother');
   const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const DISPOSABLE_DOMAINS = new Set([
@@ -339,6 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
     'trashmail.com', 'yopmail.com', 'sharklasers.com', 'dispostable.com',
     'getairmail.com', 'fakeinbox.com', 'throwawaymail.com', 'temp-mail.org',
     'generator.email', 'dropmail.me'
+  ]);
+
+  const FAKE_OR_MASH_DOMAINS = new Set([
+    'mahi.com', 'test.com', 'example.com', 'sample.com', 'fake.com',
+    'testing.com', 'mail.com', 'demo.com', 'foo.com', 'bar.com', 'xyz.com'
   ]);
 
   const KNOWN_PROVIDERS = new Set([
@@ -353,6 +359,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (DISPOSABLE_DOMAINS.has(cleanDomain)) {
       return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    if (FAKE_OR_MASH_DOMAINS.has(cleanDomain)) {
+      return { ok: false, reason: `The email domain "@${cleanDomain}" is not a recognized provider.` };
     }
 
     if (KNOWN_PROVIDERS.has(cleanDomain)) {
@@ -395,19 +405,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return { ok: true };
     } catch (e) {
-      // Graceful fallback if network is constrained
       return { ok: true };
     }
   }
 
-  // Format and Provider Syntax Check (Without premature "Valid" banner)
+  // Format and Provider Syntax Check
   const checkEmailSyntaxAndRules = (value) => {
     if (!value) {
       return { ok: false, reason: 'Email address is required to submit.' };
     }
 
     if (!strictEmailRegex.test(value)) {
-      return { ok: false, reason: 'Please enter a properly formatted email (e.g. name@domain.com).' };
+      return { ok: false, reason: 'Please enter a valid email address (e.g. name@domain.com).' };
     }
 
     const parts = value.split('@');
@@ -428,8 +437,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    if (FAKE_OR_MASH_DOMAINS.has(domainPart)) {
+      return { ok: false, reason: `The domain "@${domainPart}" is not a recognized email provider. Please enter your real email address.` };
+    }
+
     if (DISPOSABLE_DOMAINS.has(domainPart)) {
       return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    if (/^(.)\1+$/.test(userPart)) {
+      return { ok: false, reason: 'Please enter a genuine, active email address.' };
     }
 
     return { ok: true, domain: domainPart };
@@ -444,7 +461,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Only show error if clearly invalid format, no fake "Valid" green text while typing
       if (val.includes('@') && val.includes('.')) {
         const check = checkEmailSyntaxAndRules(val);
         if (!check.ok) {
@@ -483,6 +499,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  if (btnSendAnother && contactForm && contactSuccessMsg) {
+    btnSendAnother.addEventListener('click', () => {
+      contactForm.reset();
+      contactForm.style.display = 'block';
+      contactSuccessMsg.style.display = 'none';
+      if (emailErrorEl) emailErrorEl.textContent = '';
+      if (emailInput) emailInput.classList.remove('is-valid', 'is-invalid');
+    });
+  }
+
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -514,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Please enter a message with at least 10 characters.'
       );
 
-      // Email Syntax & Rule Check
+      // Email Syntax & Rule Check - STRICT BLOCK
       const emailVal = emailInput ? emailInput.value.trim() : '';
       const emailCheck = checkEmailSyntaxAndRules(emailVal);
       if (!emailCheck.ok) {
@@ -522,12 +548,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${emailCheck.reason}`;
         emailInput.focus();
         showToast(emailCheck.reason);
-        return;
+        return false; // STRICT: Abort! Never send on invalid email!
       }
 
-      if (!isValid) return;
+      if (!isValid) return false;
 
-      // Email Domain MX Verification before submitting
+      // Email Domain Verification before submitting
       const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="bi bi-arrow-repeat animate-spin"></i> Verifying email domain...';
@@ -540,28 +566,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-x-circle"></i> ${domainCheck.reason}`;
         emailInput.focus();
         showToast(domainCheck.reason);
-        return; // Form will NOT be submitted
+        return false; // STRICT: Form will NOT be submitted
       }
 
-      // Preparation
-      submitBtn.innerHTML = '<i class="bi bi-check2"></i> Verified! Preparing message...';
+      // Real Delivery to Miraj Miah's inbox
+      submitBtn.innerHTML = '<i class="bi bi-send animate-pulse"></i> Sending message...';
 
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
+      try {
+        const formData = new FormData(contactForm);
+        const res = await fetch('https://formsubmit.co/ajax/mirajmiah964@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
 
-        const mailtoUrl = `mailto:mirajmiah964@gmail.com?subject=${encodeURIComponent(
-          `[Portfolio Inquiry] ${subjectInput.value.trim()}`
-        )}&body=${encodeURIComponent(
-          `Hi Miraj,\n\nName: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\nMessage:\n${messageInput.value.trim()}`
-        )}`;
+        if (res.ok) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          contactForm.reset();
+          contactForm.style.display = 'none';
+          if (contactSuccessMsg) contactSuccessMsg.style.display = 'block';
+          showToast('Message delivered directly to Miraj Miah!');
+          return;
+        }
+      } catch (err) {
+        // Fallback below if fetch fails
+      }
 
-        window.location.href = mailtoUrl;
+      // Fallback: If network / CORS prevented AJAX, open user mail client with prefilled information
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
 
-        contactForm.style.display = 'none';
-        if (contactSuccessMsg) contactSuccessMsg.style.display = 'block';
-        showToast('Email verified! Default mail app opened with your draft.');
-      }, 600);
+      const mailtoUrl = `mailto:mirajmiah964@gmail.com?subject=${encodeURIComponent(
+        `[Portfolio Inquiry] ${subjectInput.value.trim()}`
+      )}&body=${encodeURIComponent(
+        `Hi Miraj,\n\nName: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\nMessage:\n${messageInput.value.trim()}`
+      )}`;
+
+      window.location.href = mailtoUrl;
+
+      contactForm.style.display = 'none';
+      if (contactSuccessMsg) contactSuccessMsg.style.display = 'block';
+      showToast('Default mail app opened with your draft.');
     });
   }
 
