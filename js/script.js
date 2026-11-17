@@ -327,54 +327,164 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeProjectModal();
   });
 
-  // 11. CONTACT FORM STRICT EMAIL VALIDATION & DIRECT EMAIL CLIENT LAUNCH
+  // 11. CONTACT FORM REAL-TIME & DNS-VERIFIED EMAIL VALIDATION
   const contactForm = document.getElementById('contactForm');
   const contactSuccessMsg = document.getElementById('contactSuccess');
   const emailInput = document.getElementById('contactEmail');
   const emailErrorEl = document.getElementById('contactEmailError');
   const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  const validateEmailStrict = () => {
-    if (!emailInput) return false;
-    const value = emailInput.value.trim();
+  const DISPOSABLE_DOMAINS = new Set([
+    'tempmail.com', '10minutemail.com', 'guerrillamail.com', 'mailinator.com',
+    'trashmail.com', 'yopmail.com', 'sharklasers.com', 'dispostable.com',
+    'getairmail.com', 'fakeinbox.com', 'throwawaymail.com', 'temp-mail.org',
+    'generator.email', 'dropmail.me'
+  ]);
 
+  const KNOWN_PROVIDERS = new Set([
+    'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'live.com',
+    'icloud.com', 'proton.me', 'protonmail.com', 'zoho.com', 'aol.com',
+    'sit.ac.in'
+  ]);
+
+  // Asynchronous Domain & MX Mail Server verification via DNS-over-HTTPS
+  async function verifyEmailDomainExists(domain) {
+    const cleanDomain = domain.toLowerCase().trim();
+
+    if (DISPOSABLE_DOMAINS.has(cleanDomain)) {
+      return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    if (KNOWN_PROVIDERS.has(cleanDomain)) {
+      return { ok: true };
+    }
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      const res = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(cleanDomain)}&type=MX`, {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+
+      if (!res.ok) return { ok: true }; // Network fallback
+
+      const data = await res.json();
+
+      // Status 3 = NXDOMAIN (Domain does not exist)
+      if (data.Status === 3) {
+        return { ok: false, reason: `The email domain "@${cleanDomain}" does not exist.` };
+      }
+      if (data.Status !== 0) {
+        return { ok: false, reason: `Could not find valid mail servers for "@${cleanDomain}".` };
+      }
+      if (!data.Answer || data.Answer.length === 0) {
+        return { ok: false, reason: `The domain "@${cleanDomain}" has no active mail exchange (MX) servers.` };
+      }
+
+      // Check for Null MX (RFC 7505) e.g. "0 ."
+      const hasValidMx = data.Answer.some((ans) => {
+        if (!ans.data) return false;
+        const d = ans.data.trim();
+        return d !== '0 .' && !d.endsWith(' .');
+      });
+
+      if (!hasValidMx) {
+        return { ok: false, reason: `The domain "@${cleanDomain}" does not accept incoming emails.` };
+      }
+
+      return { ok: true };
+    } catch (e) {
+      // Graceful fallback if network is constrained
+      return { ok: true };
+    }
+  }
+
+  // Format and Provider Syntax Check (Without premature "Valid" banner)
+  const checkEmailSyntaxAndRules = (value) => {
     if (!value) {
-      emailInput.classList.remove('is-valid');
-      emailInput.classList.add('is-invalid');
-      if (emailErrorEl) emailErrorEl.innerHTML = '<i class="bi bi-exclamation-circle"></i> Email address is required to submit.';
-      return false;
+      return { ok: false, reason: 'Email address is required to submit.' };
     }
 
     if (!strictEmailRegex.test(value)) {
-      emailInput.classList.remove('is-valid');
-      emailInput.classList.add('is-invalid');
-      if (emailErrorEl) emailErrorEl.innerHTML = '<i class="bi bi-exclamation-circle"></i> Please enter a valid email address (e.g. name@domain.com).';
-      return false;
+      return { ok: false, reason: 'Please enter a properly formatted email (e.g. name@domain.com).' };
     }
 
-    emailInput.classList.remove('is-invalid');
-    emailInput.classList.add('is-valid');
-    if (emailErrorEl) emailErrorEl.innerHTML = '<span style="color:var(--accent-emerald);"><i class="bi bi-check-circle"></i> Valid email address</span>';
-    return true;
+    const parts = value.split('@');
+    const userPart = parts[0];
+    const domainPart = parts[1].toLowerCase();
+
+    // Check specific provider requirements to prevent fake handles
+    if (domainPart === 'gmail.com') {
+      if (userPart.length < 6) {
+        return { ok: false, reason: 'Gmail usernames must be at least 6 characters long.' };
+      }
+      if (userPart.includes('..')) {
+        return { ok: false, reason: 'Gmail usernames cannot contain consecutive periods.' };
+      }
+    } else if (domainPart === 'yahoo.com' || domainPart === 'outlook.com') {
+      if (userPart.length < 4) {
+        return { ok: false, reason: `Usernames for @${domainPart} must be at least 4 characters long.` };
+      }
+    }
+
+    if (DISPOSABLE_DOMAINS.has(domainPart)) {
+      return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    return { ok: true, domain: domainPart };
   };
 
   if (emailInput) {
     emailInput.addEventListener('input', () => {
-      if (emailInput.value.trim().length > 2) {
-        validateEmailStrict();
-      } else {
+      const val = emailInput.value.trim();
+      if (val.length === 0) {
         emailInput.classList.remove('is-valid', 'is-invalid');
+        if (emailErrorEl) emailErrorEl.textContent = '';
+        return;
+      }
+
+      // Only show error if clearly invalid format, no fake "Valid" green text while typing
+      if (val.includes('@') && val.includes('.')) {
+        const check = checkEmailSyntaxAndRules(val);
+        if (!check.ok) {
+          emailInput.classList.add('is-invalid');
+          if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${check.reason}`;
+        } else {
+          emailInput.classList.remove('is-invalid');
+          if (emailErrorEl) emailErrorEl.textContent = '';
+        }
+      } else {
+        emailInput.classList.remove('is-invalid');
         if (emailErrorEl) emailErrorEl.textContent = '';
       }
     });
 
-    emailInput.addEventListener('blur', () => {
-      validateEmailStrict();
+    emailInput.addEventListener('blur', async () => {
+      const val = emailInput.value.trim();
+      if (!val) return;
+
+      const check = checkEmailSyntaxAndRules(val);
+      if (!check.ok) {
+        emailInput.classList.add('is-invalid');
+        if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${check.reason}`;
+        return;
+      }
+
+      // Check domain existence
+      const domainCheck = await verifyEmailDomainExists(check.domain);
+      if (!domainCheck.ok) {
+        emailInput.classList.add('is-invalid');
+        if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-x-circle"></i> ${domainCheck.reason}`;
+      } else {
+        emailInput.classList.remove('is-invalid');
+        if (emailErrorEl) emailErrorEl.textContent = '';
+      }
     });
   }
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const nameInput = document.getElementById('contactName');
@@ -384,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let isValid = true;
 
-      // Helper validator
       const validateField = (input, condition, errorText) => {
         const errorEl = document.getElementById(`${input.id}Error`);
         if (!condition) {
@@ -398,15 +507,6 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       validateField(nameInput, nameInput.value.trim().length > 0, 'Full name is required.');
-      
-      // Strict email check
-      const isEmailValid = validateEmailStrict();
-      if (!isEmailValid) {
-        isValid = false;
-        emailInput.focus();
-        showToast('Valid email required! Form cannot be submitted with an invalid email.');
-      }
-
       validateField(subjectInput, subjectInput.value.trim().length > 0, 'Subject is required.');
       validateField(
         messageInput,
@@ -414,21 +514,42 @@ document.addEventListener('DOMContentLoaded', () => {
         'Please enter a message with at least 10 characters.'
       );
 
-      // Strict block: if any field (especially email) is invalid, abort immediately
-      if (!isValid || !isEmailValid) {
-        return false;
+      // Email Syntax & Rule Check
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      const emailCheck = checkEmailSyntaxAndRules(emailVal);
+      if (!emailCheck.ok) {
+        emailInput.classList.add('is-invalid');
+        if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${emailCheck.reason}`;
+        emailInput.focus();
+        showToast(emailCheck.reason);
+        return;
       }
 
-      // Loading state
+      if (!isValid) return;
+
+      // Email Domain MX Verification before submitting
       const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="bi bi-arrow-repeat animate-spin"></i> Preparing Email...';
+      submitBtn.innerHTML = '<i class="bi bi-arrow-repeat animate-spin"></i> Verifying email domain...';
+
+      const domainCheck = await verifyEmailDomainExists(emailCheck.domain);
+      if (!domainCheck.ok) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        emailInput.classList.add('is-invalid');
+        if (emailErrorEl) emailErrorEl.innerHTML = `<i class="bi bi-x-circle"></i> ${domainCheck.reason}`;
+        emailInput.focus();
+        showToast(domainCheck.reason);
+        return; // Form will NOT be submitted
+      }
+
+      // Preparation
+      submitBtn.innerHTML = '<i class="bi bi-check2"></i> Verified! Preparing message...';
 
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
 
-        // Prefill user email client with mailto
         const mailtoUrl = `mailto:mirajmiah964@gmail.com?subject=${encodeURIComponent(
           `[Portfolio Inquiry] ${subjectInput.value.trim()}`
         )}&body=${encodeURIComponent(
@@ -437,11 +558,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.location.href = mailtoUrl;
 
-        // Display success confirmation card
         contactForm.style.display = 'none';
         if (contactSuccessMsg) contactSuccessMsg.style.display = 'block';
-        showToast('Draft prepared! Your mail application has opened.');
-      }, 700);
+        showToast('Email verified! Default mail app opened with your draft.');
+      }, 600);
     });
   }
 

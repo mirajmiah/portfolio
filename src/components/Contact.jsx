@@ -13,22 +13,105 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [verifyingEmail, setVerifyingEmail] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+  const DISPOSABLE_DOMAINS = new Set([
+    'tempmail.com', '10minutemail.com', 'guerrillamail.com', 'mailinator.com',
+    'trashmail.com', 'yopmail.com', 'sharklasers.com', 'dispostable.com',
+    'getairmail.com', 'fakeinbox.com', 'throwawaymail.com', 'temp-mail.org'
+  ]);
+
+  const KNOWN_PROVIDERS = new Set([
+    'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'live.com',
+    'icloud.com', 'proton.me', 'protonmail.com', 'zoho.com', 'aol.com',
+    'sit.ac.in'
+  ]);
+
+  const checkEmailSyntaxAndRules = (value) => {
+    if (!value) {
+      return { ok: false, reason: 'Email address is required to submit.' };
+    }
+    if (!strictEmailRegex.test(value)) {
+      return { ok: false, reason: 'Please enter a properly formatted email (e.g. name@domain.com).' };
+    }
+
+    const parts = value.split('@');
+    const userPart = parts[0];
+    const domainPart = parts[1].toLowerCase();
+
+    if (domainPart === 'gmail.com') {
+      if (userPart.length < 6) {
+        return { ok: false, reason: 'Gmail usernames must be at least 6 characters long.' };
+      }
+      if (userPart.includes('..')) {
+        return { ok: false, reason: 'Gmail usernames cannot contain consecutive periods.' };
+      }
+    } else if (domainPart === 'yahoo.com' || domainPart === 'outlook.com') {
+      if (userPart.length < 4) {
+        return { ok: false, reason: `Usernames for @${domainPart} must be at least 4 characters long.` };
+      }
+    }
+
+    if (DISPOSABLE_DOMAINS.has(domainPart)) {
+      return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+
+    return { ok: true, domain: domainPart };
+  };
+
+  const verifyEmailDomainExists = async (domain) => {
+    const cleanDomain = domain.toLowerCase().trim();
+    if (DISPOSABLE_DOMAINS.has(cleanDomain)) {
+      return { ok: false, reason: 'Disposable / temporary email addresses are not accepted.' };
+    }
+    if (KNOWN_PROVIDERS.has(cleanDomain)) {
+      return { ok: true };
+    }
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      const res = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(cleanDomain)}&type=MX`, {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      if (!res.ok) return { ok: true };
+      const data = await res.json();
+      if (data.Status === 3) {
+        return { ok: false, reason: `The email domain "@${cleanDomain}" does not exist.` };
+      }
+      if (data.Status !== 0) {
+        return { ok: false, reason: `Could not find valid mail servers for "@${cleanDomain}".` };
+      }
+      if (!data.Answer || data.Answer.length === 0) {
+        return { ok: false, reason: `The domain "@${cleanDomain}" has no active mail exchange (MX) servers.` };
+      }
+      const hasValidMx = data.Answer.some((ans) => {
+        if (!ans.data) return false;
+        const d = ans.data.trim();
+        return d !== '0 .' && !d.endsWith(' .');
+      });
+      if (!hasValidMx) {
+        return { ok: false, reason: `The domain "@${cleanDomain}" does not accept incoming emails.` };
+      }
+      return { ok: true };
+    } catch (e) {
+      return { ok: true };
+    }
+  };
+
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) errs.name = 'Full name is required.';
-    
-    // Strict email validation: form cannot be submitted unless email is valid
-    if (!formData.email.trim()) {
-      errs.email = 'Email address is required to send a message.';
-    } else if (!strictEmailRegex.test(formData.email.trim())) {
-      errs.email = 'Please enter a valid email address (e.g. name@domain.com).';
+
+    const emailCheck = checkEmailSyntaxAndRules(formData.email.trim());
+    if (!emailCheck.ok) {
+      errs.email = emailCheck.reason;
     }
-    
+
     if (!formData.subject.trim()) errs.subject = 'Subject is required.';
     if (!formData.message.trim()) {
       errs.message = 'Message is required.';
@@ -46,7 +129,7 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -55,14 +138,33 @@ export default function Contact() {
     }
 
     setLoading(true);
+    setVerifyingEmail(true);
+
+    const emailCheck = checkEmailSyntaxAndRules(formData.email.trim());
+    const domainVerification = await verifyEmailDomainExists(emailCheck.domain);
+
+    setVerifyingEmail(false);
+
+    if (!domainVerification.ok) {
+      setLoading(false);
+      setErrors((prev) => ({ ...prev, email: domainVerification.reason }));
+      return;
+    }
 
     // Provide authentic mail client connection
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
 
-      // Open user's mail client with prefilled information
       const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+        `[Portfolio] ${formData.subject}`
+      )}&body=${encodeURIComponent(
+        `Hi Miraj,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+
+      window.location.href = mailtoLink;
+    }, 700);
+  };
         `[Portfolio] ${formData.subject}`
       )}&body=${encodeURIComponent(
         `Hi Miraj,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
