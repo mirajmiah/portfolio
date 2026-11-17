@@ -213,7 +213,7 @@ export const personalInfo = {
       field: "Computer Science and Engineering",
       degree: "Bachelor of Technology (B.Tech)",
       graduationYear: "2027",
-      duration: "2023 - 2027",
+      duration: "2024 - 2027",
       status: "Undergraduate (Current)",
       coursework: [
         "Data Structures and Algorithms",
@@ -223,6 +223,21 @@ export const personalInfo = {
         "Computer Networks",
         "Software Engineering",
         "Web Technologies"
+      ]
+    },
+    {
+      institution: "State Council of Technical Education",
+      field: "Computer Science and Technology",
+      degree: "Diploma in Computer Science and Technology",
+      graduationYear: "2024",
+      duration: "2021 - 2024",
+      status: "Completed",
+      coursework: [
+        "Programming Fundamentals (C & Java)",
+        "Data Structures & Logic",
+        "Computer Hardware & Networking",
+        "Web Design & Database Systems",
+        "Digital Electronics"
       ]
     }
   ],
