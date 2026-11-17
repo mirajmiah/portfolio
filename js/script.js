@@ -327,16 +327,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeProjectModal();
   });
 
-  // 11. CONTACT FORM VALIDATION & DIRECT EMAIL CLIENT LAUNCH
+  // 11. CONTACT FORM STRICT EMAIL VALIDATION & DIRECT EMAIL CLIENT LAUNCH
   const contactForm = document.getElementById('contactForm');
   const contactSuccessMsg = document.getElementById('contactSuccess');
+  const emailInput = document.getElementById('contactEmail');
+  const emailErrorEl = document.getElementById('contactEmailError');
+  const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const validateEmailStrict = () => {
+    if (!emailInput) return false;
+    const value = emailInput.value.trim();
+
+    if (!value) {
+      emailInput.classList.remove('is-valid');
+      emailInput.classList.add('is-invalid');
+      if (emailErrorEl) emailErrorEl.innerHTML = '<i class="bi bi-exclamation-circle"></i> Email address is required to submit.';
+      return false;
+    }
+
+    if (!strictEmailRegex.test(value)) {
+      emailInput.classList.remove('is-valid');
+      emailInput.classList.add('is-invalid');
+      if (emailErrorEl) emailErrorEl.innerHTML = '<i class="bi bi-exclamation-circle"></i> Please enter a valid email address (e.g. name@domain.com).';
+      return false;
+    }
+
+    emailInput.classList.remove('is-invalid');
+    emailInput.classList.add('is-valid');
+    if (emailErrorEl) emailErrorEl.innerHTML = '<span style="color:var(--accent-emerald);"><i class="bi bi-check-circle"></i> Valid email address</span>';
+    return true;
+  };
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      if (emailInput.value.trim().length > 2) {
+        validateEmailStrict();
+      } else {
+        emailInput.classList.remove('is-valid', 'is-invalid');
+        if (emailErrorEl) emailErrorEl.textContent = '';
+      }
+    });
+
+    emailInput.addEventListener('blur', () => {
+      validateEmailStrict();
+    });
+  }
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const nameInput = document.getElementById('contactName');
-      const emailInput = document.getElementById('contactEmail');
       const subjectInput = document.getElementById('contactSubject');
       const messageInput = document.getElementById('contactMessage');
       const submitBtn = document.getElementById('contactSubmitBtn');
@@ -357,11 +398,15 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       validateField(nameInput, nameInput.value.trim().length > 0, 'Full name is required.');
-      validateField(
-        emailInput,
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim()),
-        'Please enter a valid email address.'
-      );
+      
+      // Strict email check
+      const isEmailValid = validateEmailStrict();
+      if (!isEmailValid) {
+        isValid = false;
+        emailInput.focus();
+        showToast('Valid email required! Form cannot be submitted with an invalid email.');
+      }
+
       validateField(subjectInput, subjectInput.value.trim().length > 0, 'Subject is required.');
       validateField(
         messageInput,
@@ -369,7 +414,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'Please enter a message with at least 10 characters.'
       );
 
-      if (!isValid) return;
+      // Strict block: if any field (especially email) is invalid, abort immediately
+      if (!isValid || !isEmailValid) {
+        return false;
+      }
 
       // Loading state
       const originalText = submitBtn.innerHTML;

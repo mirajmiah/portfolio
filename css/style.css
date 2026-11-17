@@ -1429,6 +1429,11 @@ button, input, textarea {
   background: rgba(244, 63, 94, 0.04);
 }
 
+.form-control.is-valid {
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
 .form-error-msg {
   display: flex;
   align-items: center;

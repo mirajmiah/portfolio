@@ -16,14 +16,19 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) errs.name = 'Full name is required.';
+    
+    // Strict email validation: form cannot be submitted unless email is valid
     if (!formData.email.trim()) {
-      errs.email = 'Email address is required.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please enter a valid email address.';
+      errs.email = 'Email address is required to send a message.';
+    } else if (!strictEmailRegex.test(formData.email.trim())) {
+      errs.email = 'Please enter a valid email address (e.g. name@domain.com).';
     }
+    
     if (!formData.subject.trim()) errs.subject = 'Subject is required.';
     if (!formData.message.trim()) {
       errs.message = 'Message is required.';
