@@ -177,7 +177,7 @@ export default function Hero() {
                   <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg backdrop-blur-md bg-black/50 border border-white/15 text-white">
                     <p className="text-xs font-semibold tracking-wide">Miraj Miah</p>
                     <p className="text-[11px] text-slate-300 font-mono">
-                      B.Tech CSE &bull; Class of 2027
+                      Intern at Airports Authority of India (AAI), Bagdogra Airport
                     </p>
                   </div>
                 </div>

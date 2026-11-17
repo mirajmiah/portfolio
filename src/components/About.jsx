@@ -39,7 +39,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 text-white">
                   <p className="font-bold text-sm">Miraj Miah</p>
-                  <p className="text-xs text-slate-300">Bagdogra Airport, CNS Training Exposure</p>
+                  <p className="text-xs text-slate-300">Intern at Airports Authority of India (AAI), Bagdogra Airport</p>
                 </div>
               </div>
 
