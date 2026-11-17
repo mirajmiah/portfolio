@@ -1378,6 +1378,16 @@ button, input, textarea {
   border-radius: 20px;
 }
 
+.contact-channel-item {
+  transition: all 0.2s ease;
+}
+
+.contact-channel-item:hover {
+  background: var(--bg-card-hover) !important;
+  border-color: var(--border-hover) !important;
+  transform: translateX(4px);
+}
+
 .contact-form-card {
   padding: 2.25rem;
   border-radius: 20px;

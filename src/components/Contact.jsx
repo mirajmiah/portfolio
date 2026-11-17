@@ -92,47 +92,66 @@ export default function Contact() {
 
         {/* Contact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto items-start">
-          {/* Direct Details & Direct Alternative */}
+          {/* Left: Direct Channels Card (Screenshot Updated) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 rounded-2xl border dark:border-white/10 dark:bg-dark-card light:border-slate-200 light:bg-white shadow-sm space-y-6">
-              <h3 className="text-lg font-bold font-sans dark:text-white light:text-slate-900">
-                Direct Communication
+            <div className="p-6 sm:p-8 rounded-2xl border dark:border-white/10 dark:bg-dark-card light:border-slate-200 light:bg-white shadow-sm space-y-5">
+              <span className="text-xs font-mono uppercase tracking-widest font-bold text-emerald-400 block">
+                CONTACT
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold font-sans dark:text-white light:text-slate-900 leading-tight">
+                Let's build something dependable.
               </h3>
-              <p className="text-xs sm:text-sm leading-relaxed dark:text-slate-300 light:text-slate-600">
-                Whether you have an internship opportunity, project collaboration, or want to discuss technical ideas, I am always happy to respond.
+              <p className="text-sm leading-relaxed dark:text-slate-300 light:text-slate-600">
+                I'm looking for backend, Python and full-stack roles in India or remote. The fastest way to reach me is email.
               </p>
 
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded-xl dark:bg-white/5 light:bg-slate-50 border dark:border-white/5 light:border-slate-100">
-                  <Mail className="w-5 h-5 text-indigo-400 mt-0.5 shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <span className="block text-[11px] font-mono uppercase text-slate-400">Email Address</span>
-                    <a
-                      href={`mailto:${personalInfo.email}`}
-                      className="text-xs sm:text-sm font-medium dark:text-white light:text-slate-900 hover:text-indigo-400 truncate block"
-                    >
-                      {personalInfo.email}
-                    </a>
-                  </div>
-                  <button
-                    onClick={handleCopyEmail}
-                    type="button"
-                    className="p-1.5 rounded-lg dark:hover:bg-white/10 light:hover:bg-slate-200 text-slate-400"
-                    title="Copy email"
-                  >
-                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  </button>
-                </div>
+              <div className="space-y-3 pt-2">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] dark:hover:bg-white/[0.06] light:border-slate-100 light:bg-slate-50 light:hover:bg-slate-100 transition-all group"
+                >
+                  <Mail className="w-5 h-5 text-indigo-400 shrink-0" />
+                  <span className="flex-1 text-sm font-medium dark:text-white light:text-slate-900 truncate">
+                    {personalInfo.email}
+                  </span>
+                </a>
 
-                <div className="flex items-start gap-3 p-3 rounded-xl dark:bg-white/5 light:bg-slate-50 border dark:border-white/5 light:border-slate-100">
-                  <MapPin className="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" />
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-slate-400">Location</span>
-                    <p className="text-xs sm:text-sm font-medium dark:text-white light:text-slate-900">
-                      {personalInfo.contact.location}
-                    </p>
-                  </div>
-                </div>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] dark:hover:bg-white/[0.06] light:border-slate-100 light:bg-slate-50 light:hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-blue-500 font-bold text-sm shrink-0">in</span>
+                  <span className="flex-1 text-sm font-medium dark:text-white light:text-slate-900">
+                    LinkedIn
+                  </span>
+                </a>
+
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] dark:hover:bg-white/[0.06] light:border-slate-100 light:bg-slate-50 light:hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-slate-400 font-bold text-sm shrink-0">gh</span>
+                  <span className="flex-1 text-sm font-medium dark:text-white light:text-slate-900">
+                    GitHub
+                  </span>
+                </a>
+
+                <a
+                  href={personalInfo.resumePath}
+                  download="Miraj_Miah_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-3.5 rounded-xl border dark:border-white/5 dark:bg-white/[0.02] dark:hover:bg-white/[0.06] light:border-slate-100 light:bg-slate-50 light:hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-emerald-400 font-bold text-sm shrink-0">&darr;</span>
+                  <span className="flex-1 text-sm font-medium dark:text-white light:text-slate-900">
+                    Download resume (PDF)
+                  </span>
+                </a>
               </div>
             </div>
           </div>
