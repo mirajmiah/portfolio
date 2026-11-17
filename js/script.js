@@ -422,6 +422,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const parts = value.split('@');
     const userPart = parts[0];
     const domainPart = parts[1].toLowerCase();
+    const domainName = domainPart.split('.')[0]; // e.g. "ma" in "ma.com"
+
+    // Primary trusted email services
+    const TRUSTED_PROVIDERS = new Set([
+      'gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com',
+      'icloud.com', 'proton.me', 'protonmail.com', 'zoho.com',
+      'live.com', 'aol.com', 'gmx.com', 'ymail.com', 'sit.ac.in'
+    ]);
+
+    // Reject random, ultra-short or suspicious domains like ma.com
+    if (!TRUSTED_PROVIDERS.has(domainPart)) {
+      if (
+        domainName.length < 4 &&
+        !domainPart.endsWith('.edu') &&
+        !domainPart.endsWith('.ac.in') &&
+        !domainPart.endsWith('.gov')
+      ) {
+        return {
+          ok: false,
+          reason: 'Please use a recognized email provider (e.g. @gmail.com, @outlook.com, @yahoo.com) or your official company/college email.'
+        };
+      }
+    }
 
     // Check specific provider requirements to prevent fake handles
     if (domainPart === 'gmail.com') {
@@ -438,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (FAKE_OR_MASH_DOMAINS.has(domainPart)) {
-      return { ok: false, reason: `The domain "@${domainPart}" is not a recognized email provider. Please enter your real email address.` };
+      return { ok: false, reason: `The domain "@${domainPart}" is not an accepted email provider. Please use @gmail.com or an official provider.` };
     }
 
     if (DISPOSABLE_DOMAINS.has(domainPart)) {

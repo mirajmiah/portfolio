@@ -48,6 +48,28 @@ export default function Contact() {
     const userPart = parts[0];
     const domainPart = parts[1].toLowerCase();
 
+    const domainName = domainPart.split('.')[0];
+
+    const TRUSTED_PROVIDERS = new Set([
+      'gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com',
+      'icloud.com', 'proton.me', 'protonmail.com', 'zoho.com',
+      'live.com', 'aol.com', 'gmx.com', 'ymail.com', 'sit.ac.in'
+    ]);
+
+    if (!TRUSTED_PROVIDERS.has(domainPart)) {
+      if (
+        domainName.length < 4 &&
+        !domainPart.endsWith('.edu') &&
+        !domainPart.endsWith('.ac.in') &&
+        !domainPart.endsWith('.gov')
+      ) {
+        return {
+          ok: false,
+          reason: 'Please use a recognized email provider (e.g. @gmail.com, @outlook.com, @yahoo.com) or an official work/college email.'
+        };
+      }
+    }
+
     if (domainPart === 'gmail.com') {
       if (userPart.length < 6) {
         return { ok: false, reason: 'Gmail usernames must be at least 6 characters long.' };
