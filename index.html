@@ -1,42 +1,1098 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Miraj Miah | Aspiring Software Developer</title>
-    <meta
-      name="description"
-      content="Explore the portfolio of Miraj Miah, a Computer Science and Engineering student at Siliguri Institute of Technology, showcasing software development projects, programming skills, and professional experience."
-    />
-    <meta
-      name="keywords"
-      content="Miraj Miah, Software Developer, CSE Student, Siliguri Institute of Technology, Java Developer, Web Development, React, Node.js, Bagdogra Airport CNS Trainee"
-    />
-    <meta name="author" content="Miraj Miah" />
-    <meta name="theme-color" content="#0A0D14" />
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miraj Miah | Aspiring Software Developer</title>
+  <meta name="description" content="Explore the portfolio of Miraj Miah, a Computer Science and Engineering student at Siliguri Institute of Technology, showcasing software development projects, programming skills, and professional experience.">
+  <meta name="keywords" content="Miraj Miah, Software Developer, CSE Student, Siliguri Institute of Technology, Java Developer, Web Development, React, Node.js, Bagdogra Airport CNS Trainee">
+  <meta name="author" content="Miraj Miah">
+  <meta name="theme-color" content="#07090e">
 
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Miraj Miah | Aspiring Software Developer" />
-    <meta
-      property="og:description"
-      content="Explore the portfolio of Miraj Miah, Computer Science and Engineering student at Siliguri Institute of Technology."
-    />
-    <meta property="og:image" content="./images/miraj-profile.jpeg" />
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Miraj Miah | Aspiring Software Developer">
+  <meta property="og:description" content="Explore the portfolio of Miraj Miah, a Computer Science and Engineering student at Siliguri Institute of Technology.">
+  <meta property="og:image" content="public/images/miraj-profile.jpeg">
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%236366F1'/><text y='65' x='50' text-anchor='middle' font-size='50' font-family='sans-serif' font-weight='bold' fill='white'>M</text></svg>"
-    />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%236366F1'/><text y='65' x='50' text-anchor='middle' font-size='50' font-family='sans-serif' font-weight='bold' fill='white'>M</text></svg>">
 
-    <!-- Google Fonts Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body class="bg-dark-bg text-dark-text antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Ultra-Modern Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Reading Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Ambient Mesh & Gradient Lighting Canvas -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <!-- ==================== HEADER & STICKY NAVIGATION ==================== -->
+  <header class="navbar" id="mainNav">
+    <div class="nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" aria-label="Miraj Miah Homepage">
+        <span class="brand-badge">dev</span>
+        <span>MIRAJ<span class="brand-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#learning" class="nav-link">Learning</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button type="button" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+          <i class="bi bi-sun"></i>
+        </button>
+
+        <!-- Resume Download Button -->
+        <a href="public/resume/miraj-resume.pdf" download="Miraj_Miah_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-nav-resume">
+          <i class="bi bi-file-earmark-arrow-down"></i>
+          <span>Resume</span>
+        </a>
+
+        <!-- Contact CTA -->
+        <a href="#contact" class="btn-nav-connect">
+          <span>Let's Talk</span>
+          <i class="bi bi-arrow-right-short"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#learning" class="nav-link">Learning</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+        <a href="public/resume/miraj-resume.pdf" download="Miraj_Miah_Resume.pdf" class="btn-secondary" style="flex:1;justify-content:center;font-size:0.8125rem;padding:0.6rem;">
+          <i class="bi bi-download"></i> Resume
+        </a>
+        <a href="#contact" class="btn-primary" style="flex:1;justify-content:center;font-size:0.8125rem;padding:0.6rem;">
+          Connect
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content">
+
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Column: Content -->
+          <div class="hero-content">
+            <!-- Availability Pill -->
+            <div class="hero-badge">
+              <span class="pulse-dot"></span>
+              <span>Available for internships & 2027 placements</span>
+            </div>
+
+            <!-- Monospace Intro Tag -->
+            <p class="hero-intro">
+              <i class="bi bi-code-slash"></i> HELLO, I'M
+            </p>
+
+            <!-- Main Heading -->
+            <h1 class="hero-name">Miraj Miah.</h1>
+
+            <!-- Professional Headline -->
+            <h2 class="hero-headline">Building Digital Experiences Through Code.</h2>
+
+            <!-- Supporting Description -->
+            <p class="hero-desc">
+              I'm a Computer Science and Engineering student passionate about software development, programming, and solving real-world problems through technology.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn-primary">
+                <span>View My Projects</span>
+                <i class="bi bi-arrow-down"></i>
+              </a>
+
+              <a href="public/resume/miraj-resume.pdf" download="Miraj_Miah_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="bi bi-file-earmark-pdf text-indigo-500"></i>
+                <span>Download Resume</span>
+              </a>
+            </div>
+
+            <!-- Direct Social & Email Quick Actions -->
+            <div class="hero-social-bar">
+              <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="social-pill" title="GitHub Profile">
+                <i class="bi bi-github"></i>
+                <span>GitHub</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" class="social-pill" title="LinkedIn Profile">
+                <i class="bi bi-linkedin" style="color:#0a66c2;"></i>
+                <span>LinkedIn</span>
+              </a>
+
+              <button type="button" class="social-pill btn-copy-email" title="Copy Email Address">
+                <i class="bi bi-copy"></i>
+                <span>Copy Email</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Real Photo Card & Interactive Terminal -->
+          <div class="hero-visual-container">
+            <!-- Professional Framed Photograph -->
+            <div class="profile-photo-card spotlight-card">
+              <div class="photo-wrapper">
+                <img src="public/images/miraj-profile.jpeg" alt="Miraj Miah - Computer Science & Engineering Student" class="profile-img" loading="eager">
+                <div class="photo-badge-overlay">
+                  <div class="badge-details">
+                    <h4>Miraj Miah</h4>
+                    <p>Siliguri Institute of Technology &bull; '27</p>
+                  </div>
+                  <span class="badge-tag">B.Tech CSE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Terminal Console Widget -->
+            <div class="code-terminal">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="terminal-dot dot-red"></span>
+                  <span class="terminal-dot dot-yellow"></span>
+                  <span class="terminal-dot dot-green"></span>
+                </div>
+                <div class="terminal-title">developer.config.ts</div>
+                <div class="terminal-tabs">
+                  <button type="button" class="terminal-tab-btn active" data-tab="profile">Profile</button>
+                  <button type="button" class="terminal-tab-btn" data-tab="stack">Stack</button>
+                  <button type="button" class="terminal-tab-btn" data-tab="internship">AAI CNS</button>
+                </div>
+              </div>
+              <div class="terminal-body" id="terminalContent">
+<span class="token-keyword">const</span> developer: <span class="token-property">DeveloperProfile</span> = {
+  <span class="token-property">name</span>: <span class="token-string">"Miraj Miah"</span>,
+  <span class="token-property">title</span>: <span class="token-string">"Aspiring Software Developer"</span>,
+  <span class="token-property">degree</span>: <span class="token-string">"B.Tech Computer Science & Eng"</span>,
+  <span class="token-property">institution</span>: <span class="token-string">"Siliguri Institute of Technology"</span>,
+  <span class="token-property">gradYear</span>: <span class="token-keyword">2027</span>,
+  <span class="token-property">passion</span>: <span class="token-string">"Transforming ideas into resilient digital solutions"</span>
+};
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. ABOUT ME (BENTO GRID) ==================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-person"></i> A little introduction</span>
+          <h2 class="section-title">About Me</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Main Narrative Bio Card -->
+          <div class="spotlight-card bento-card-main">
+            <h3 style="font-size:1.35rem;font-weight:700;margin-bottom:1.25rem;">Building with Purpose &amp; Dedication</h3>
+            <div class="bio-paragraphs">
+              <p>
+                I am a Computer Science and Engineering student at Siliguri Institute of Technology with a strong interest in software development and modern technologies.
+              </p>
+              <p>
+                I enjoy programming, solving problems, and developing applications that offer practical solutions. My technical journey has helped me build a foundation in Java, C, and web development technologies.
+              </p>
+              <p>
+                I believe that learning by building is one of the best ways to improve. I enjoy exploring new technologies, experimenting with ideas, and developing projects that solve practical problems.
+              </p>
+              <p>
+                I am continuously working to improve my technical abilities and prepare myself for opportunities in the software industry.
+              </p>
+            </div>
+
+            <!-- Key Metric Counters -->
+            <div class="stat-metric-row">
+              <div class="stat-item">
+                <div class="stat-number">2027</div>
+                <div class="stat-label">Graduation Year</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">B.Tech</div>
+                <div class="stat-label">Computer Science &amp; Eng</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Featured Projects</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">AAI</div>
+                <div class="stat-label">Bagdogra Airport Trainee</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mindset & Core Values Card -->
+          <div class="spotlight-card bento-card-side">
+            <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+              <i class="bi bi-stars text-indigo-400"></i> Mindset &amp; Work Ethic
+            </h3>
+            <div class="mindset-list">
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Passionate about coding & clean logic</span>
+              </div>
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Enjoys analytical problem-solving</span>
+              </div>
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Interested in software development</span>
+              </div>
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Curious about emerging technologies</span>
+              </div>
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Creative, dedicated, and detail-oriented</span>
+              </div>
+              <div class="mindset-item">
+                <i class="bi bi-check-circle-fill mindset-icon"></i>
+                <span>Believes in continuous hands-on learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. TECHNICAL SKILLS ==================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-cpu"></i> Technologies and tools I work with</span>
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <!-- Category Groups -->
+        <div style="display:flex;flex-direction:column;gap:2rem;">
+
+          <!-- Programming Languages -->
+          <div class="skill-category-group">
+            <div class="category-header">
+              <h3 class="category-name"><i class="bi bi-code-slash text-indigo-400" style="margin-right:0.4rem;"></i> Programming Languages</h3>
+              <span class="category-count">3 Technologies</span>
+            </div>
+            <div class="skills-grid">
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-cup-hot"></i></div>
+                <div class="skill-meta">
+                  <h4>Java</h4>
+                  <span>Core &bull; OOP Paradigms</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-terminal"></i></div>
+                <div class="skill-meta">
+                  <h4>C</h4>
+                  <span>Procedural &bull; Memory Logic</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-filetype-py"></i></div>
+                <div class="skill-meta">
+                  <h4>Python</h4>
+                  <span>Scripting &bull; Problem Solving</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend Development -->
+          <div class="skill-category-group">
+            <div class="category-header">
+              <h3 class="category-name"><i class="bi bi-layout-text-window-reverse text-cyan-400" style="margin-right:0.4rem;"></i> Frontend Development</h3>
+              <span class="category-count">4 Technologies</span>
+            </div>
+            <div class="skills-grid">
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-filetype-html"></i></div>
+                <div class="skill-meta">
+                  <h4>HTML5</h4>
+                  <span>Semantic Structure</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-filetype-css"></i></div>
+                <div class="skill-meta">
+                  <h4>CSS3</h4>
+                  <span>Modern Responsive Styling</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-filetype-js"></i></div>
+                <div class="skill-meta">
+                  <h4>JavaScript</h4>
+                  <span>ES6+ &bull; Async Execution</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-bootstrap"></i></div>
+                <div class="skill-meta">
+                  <h4>Bootstrap</h4>
+                  <span>Component UI Framework</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend Development -->
+          <div class="skill-category-group">
+            <div class="category-header">
+              <h3 class="category-name"><i class="bi bi-hdd-network text-purple-400" style="margin-right:0.4rem;"></i> Backend Development</h3>
+              <span class="category-count">3 Technologies</span>
+            </div>
+            <div class="skills-grid">
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-server"></i></div>
+                <div class="skill-meta">
+                  <h4>Node.js</h4>
+                  <span>JavaScript Runtime Engine</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-layers"></i></div>
+                <div class="skill-meta">
+                  <h4>Express.js</h4>
+                  <span>Microservices &amp; Routing</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-arrow-left-right"></i></div>
+                <div class="skill-meta">
+                  <h4>REST APIs</h4>
+                  <span>Architecture &amp; Endpoints</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-category-group">
+            <div class="category-header">
+              <h3 class="category-name"><i class="bi bi-database text-emerald-400" style="margin-right:0.4rem;"></i> Database Systems</h3>
+              <span class="category-count">3 Technologies</span>
+            </div>
+            <div class="skills-grid">
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-database-check"></i></div>
+                <div class="skill-meta">
+                  <h4>SQLite</h4>
+                  <span>Embedded Relational Storage</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-database-fill"></i></div>
+                <div class="skill-meta">
+                  <h4>MySQL</h4>
+                  <span>Relational Schemas &amp; Queries</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-file-earmark-code"></i></div>
+                <div class="skill-meta">
+                  <h4>MongoDB</h4>
+                  <span>Document NoSQL Database</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Developer Tools -->
+          <div class="skill-category-group">
+            <div class="category-header">
+              <h3 class="category-name"><i class="bi bi-tools text-amber-400" style="margin-right:0.4rem;"></i> Developer Tools</h3>
+              <span class="category-count">4 Tools</span>
+            </div>
+            <div class="skills-grid">
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-git"></i></div>
+                <div class="skill-meta">
+                  <h4>Git</h4>
+                  <span>Distributed Version Control</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-github"></i></div>
+                <div class="skill-meta">
+                  <h4>GitHub</h4>
+                  <span>Repositories &amp; Collaboration</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-code-square"></i></div>
+                <div class="skill-meta">
+                  <h4>VS Code</h4>
+                  <span>Primary Development Environment</span>
+                </div>
+              </div>
+              <div class="spotlight-card skill-card">
+                <div class="skill-icon-box"><i class="bi bi-cloud-arrow-up"></i></div>
+                <div class="skill-meta">
+                  <h4>Render</h4>
+                  <span>Cloud Deployment Platform</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. FEATURED PROJECTS ==================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-folder-check"></i> Some things I've worked on and built</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="skills-filter-nav">
+          <button type="button" class="filter-btn project-filter-btn active" data-category="all">All Projects</button>
+          <button type="button" class="filter-btn project-filter-btn" data-category="fullstack">Full Stack</button>
+          <button type="button" class="filter-btn project-filter-btn" data-category="apps">Applications</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- PROJECT 01: TALKSY -->
+          <div class="spotlight-card project-card" data-category="fullstack">
+            <div class="project-preview">
+              <img src="public/images/talksy.jpg" alt="Talksy Communication Platform Preview" loading="lazy">
+              <span class="project-badge-status">Active Project</span>
+            </div>
+            <div class="project-body">
+              <div>
+                <p class="project-tagline">Communication Platform</p>
+                <h3 class="project-title">Talksy</h3>
+                <p class="project-desc">
+                  Talksy is a communication platform designed to connect people through usernames, connection requests, and messaging.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">React.js</span>
+                  <span class="project-tag">Node.js</span>
+                  <span class="project-tag">Express.js</span>
+                  <span class="project-tag">MongoDB</span>
+                  <span class="project-tag">Socket.io</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <div class="project-links">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+                    <i class="bi bi-github"></i>
+                  </a>
+                </div>
+                <button type="button" class="btn-details btn-view-features" data-project="talksy">
+                  <i class="bi bi-info-circle"></i> Features
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 02: E-COMMERCE -->
+          <div class="spotlight-card project-card" data-category="fullstack">
+            <div class="project-preview">
+              <img src="public/images/student-system.jpg" alt="E-Commerce Web Application Preview" loading="lazy">
+              <span class="project-badge-status">In Development</span>
+            </div>
+            <div class="project-body">
+              <div>
+                <p class="project-tagline">Full-Stack Solution</p>
+                <h3 class="project-title">E-Commerce Web App</h3>
+                <p class="project-desc">
+                  A full-stack e-commerce application designed to provide a smooth online shopping experience with cart and order management.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">JavaScript</span>
+                  <span class="project-tag">Node.js</span>
+                  <span class="project-tag">Express.js</span>
+                  <span class="project-tag">MongoDB</span>
+                  <span class="project-tag">REST APIs</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <div class="project-links">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+                    <i class="bi bi-github"></i>
+                  </a>
+                </div>
+                <button type="button" class="btn-details btn-view-features" data-project="ecommerce">
+                  <i class="bi bi-info-circle"></i> Features
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 03: MEDICINE REMINDER -->
+          <div class="spotlight-card project-card" data-category="apps">
+            <div class="project-preview">
+              <img src="public/images/grammar-assistant.jpg" alt="Medicine Reminder Application Preview" loading="lazy">
+              <span class="project-badge-status">Concept / Prototype</span>
+            </div>
+            <div class="project-body">
+              <div>
+                <p class="project-tagline">Healthcare Scheduling</p>
+                <h3 class="project-title">Medicine Reminder</h3>
+                <p class="project-desc">
+                  A practical application concept designed to help users organize their medication schedules, dosage intervals, and reminders.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">Java</span>
+                  <span class="project-tag">SQLite</span>
+                  <span class="project-tag">OOP Design</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <div class="project-links">
+                  <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+                    <i class="bi bi-github"></i>
+                  </a>
+                </div>
+                <button type="button" class="btn-details btn-view-features" data-project="medicine">
+                  <i class="bi bi-info-circle"></i> Features
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. EXPERIENCE & PROFESSIONAL JOURNEY ==================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-radar"></i> Practical Airport Telemetry</span>
+          <h2 class="section-title">Experience &amp; Professional Journey</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="spotlight-card experience-radar-card" style="max-width:980px;margin:0 auto;">
+          <div class="exp-header">
+            <div>
+              <span class="exp-role-badge"><i class="bi bi-shield-check"></i> Internship Training</span>
+              <h3 class="exp-title">CNS Trainee</h3>
+              <p class="exp-org">
+                <i class="bi bi-airplane-engines text-indigo-400"></i>
+                Airports Authority of India (AAI) &bull; Bagdogra Airport (IXB)
+              </p>
+            </div>
+            <div class="exp-meta">
+              <span><i class="bi bi-calendar3 text-indigo-400"></i> 07 September 2026 – 06 October 2026</span>
+              <span><i class="bi bi-geo-alt text-cyan-400"></i> Bagdogra, Siliguri, India</span>
+            </div>
+          </div>
+
+          <p style="font-size:1rem;color:var(--text-secondary);line-height:1.7;">
+            Completed a one-month internship as a CNS Trainee, gaining practical exposure to airport communication, navigation, surveillance, and networking infrastructure.
+          </p>
+
+          <!-- Areas of Exposure Grid -->
+          <div class="exposure-grid">
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-display text-indigo-400"></i>
+                <span>FIDS</span> &mdash; Flight Information Display System
+              </div>
+              <p class="exposure-desc">
+                Real-time synchronized flight schedule departure/arrival feeds displayed across passenger terminal concourses.
+              </p>
+            </div>
+
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-camera-video text-cyan-400"></i>
+                <span>CCTV</span> &mdash; Closed Circuit Television
+              </div>
+              <p class="exposure-desc">
+                High-security multi-node IP surveillance network topology and real-time operational security recording.
+              </p>
+            </div>
+
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-megaphone text-purple-400"></i>
+                <span>PA System</span> &mdash; Public Address System
+              </div>
+              <p class="exposure-desc">
+                Acoustic multi-zone passenger voice announcement systems and automated emergency evacuation routing.
+              </p>
+            </div>
+
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-telephone-inbound text-amber-400"></i>
+                <span>EPABX</span> &mdash; Electronic Private Automatic Branch Exchange
+              </div>
+              <p class="exposure-desc">
+                Internal airport communications switching infrastructure, trunk circuits, and administrative voice lines.
+              </p>
+            </div>
+
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-diagram-3 text-emerald-400"></i>
+                <span>CAT6 Networking</span> &mdash; Structured Cabling
+              </div>
+              <p class="exposure-desc">
+                High-bandwidth Ethernet LAN infrastructure, patch panels, switch trunking, and physical distribution.
+              </p>
+            </div>
+
+            <div class="exposure-card">
+              <div class="exposure-header">
+                <i class="bi bi-activity text-rose-400"></i>
+                <span>Fibre-Optic</span> &mdash; Backbone Infrastructure
+              </div>
+              <p class="exposure-desc">
+                Low-latency optical communications backbone supporting mission-critical airport data integrity and operations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. EDUCATION ==================== -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-mortarboard"></i> Academic foundation</span>
+          <h2 class="section-title">Education</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="spotlight-card education-card" style="max-width:980px;margin:0 auto;">
+          <div class="exp-header" style="border:none;padding-bottom:0;margin-bottom:1.5rem;">
+            <div>
+              <span class="exp-role-badge"><i class="bi bi-book"></i> Undergraduate Degree</span>
+              <h3 class="exp-title">Siliguri Institute of Technology</h3>
+              <p class="exp-org" style="color:var(--accent-primary);">
+                Bachelor of Technology (B.Tech) &mdash; Computer Science and Engineering
+              </p>
+            </div>
+            <div class="exp-meta">
+              <span><i class="bi bi-calendar3 text-indigo-400"></i> Graduation Year: 2027</span>
+              <span><i class="bi bi-clock-history text-cyan-400"></i> Duration: 2023 &ndash; 2027</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="font-size:0.9375rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+              Relevant Coursework &amp; Engineering Subjects:
+            </h4>
+            <div class="coursework-badges">
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Data Structures &amp; Algorithms</span>
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Object-Oriented Programming (Java / C++)</span>
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Database Management Systems (DBMS)</span>
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Operating Systems</span>
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Computer Networks</span>
+              <span class="course-badge"><i class="bi bi-check2 text-emerald-400"></i> Software Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. ALWAYS LEARNING, ALWAYS BUILDING ==================== -->
+    <section class="section" id="learning">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-compass"></i> Continuous Curiosity &amp; Growth</span>
+          <h2 class="section-title">Always Learning, Always Building</h2>
+          <div class="section-title-line"></div>
+          <p class="section-desc">Key technical domains I actively study, experiment with, and cultivate.</p>
+        </div>
+
+        <div class="learning-grid">
+          <!-- 1. Java -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-cup-hot"></i></div>
+              <h4>Java Programming</h4>
+              <p>Object-Oriented architecture, class hierarchies, multithreading, and enterprise backend robustness.</p>
+            </div>
+          </div>
+
+          <!-- 2. DSA -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-diagram-2"></i></div>
+              <h4>Data Structures &amp; Algorithms</h4>
+              <p>Algorithmic complexity, competitive programming paradigms, trees, graphs, and efficient computational logic.</p>
+            </div>
+          </div>
+
+          <!-- 3. Software Engineering -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-boxes"></i></div>
+              <h4>Software Engineering</h4>
+              <p>Clean code architecture, modular design principles, version-controlled workflows, and maintainability.</p>
+            </div>
+          </div>
+
+          <!-- 4. Full-Stack Development -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-stack"></i></div>
+              <h4>Full-Stack Development</h4>
+              <p>Integrating high-performance client interfaces with RESTful server backends and database schemas.</p>
+            </div>
+          </div>
+
+          <!-- 5. Database Management -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-database"></i></div>
+              <h4>Database Management</h4>
+              <p>Relational normalization, indexing strategies in SQL, and scalable schema models in NoSQL systems.</p>
+            </div>
+          </div>
+
+          <!-- 6. Problem Solving -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-puzzle"></i></div>
+              <h4>Problem Solving</h4>
+              <p>Breaking multifaceted practical problems down into elegant, robust, and verifiable software algorithms.</p>
+            </div>
+          </div>
+
+          <!-- 7. Data Engineering -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-cpu"></i></div>
+              <h4>Data Engineering</h4>
+              <p>Understanding data transformation pipelines, reliable storage formats, and distributed ingestion.</p>
+            </div>
+          </div>
+
+          <!-- 8. Cybersecurity -->
+          <div class="spotlight-card learning-card">
+            <div>
+              <div class="learning-icon"><i class="bi bi-shield-lock"></i></div>
+              <h4>Cybersecurity</h4>
+              <p>Input validation, session security, encryption protocols, and foundational defense practices.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. SOCIAL PROFILES ==================== -->
+    <section class="section" style="padding-top:2rem;padding-bottom:4rem;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom:2.5rem;">
+          <span class="section-tag"><i class="bi bi-globe"></i> Online presence</span>
+          <h2 class="section-title">Dedicated Social Profiles</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="socials-grid">
+          <!-- GitHub Card -->
+          <div class="spotlight-card social-card">
+            <div>
+              <div class="social-header">
+                <div class="social-icon-box"><i class="bi bi-github"></i></div>
+                <i class="bi bi-arrow-up-right text-muted"></i>
+              </div>
+              <h3>GitHub</h3>
+              <p class="handle">@mirajmiah</p>
+              <p>Browse open source code repositories, commits, algorithms, and development history.</p>
+            </div>
+            <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-social-action">
+              <span>Visit GitHub</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="spotlight-card social-card">
+            <div>
+              <div class="social-header">
+                <div class="social-icon-box" style="color:#0a66c2;"><i class="bi bi-linkedin"></i></div>
+                <i class="bi bi-arrow-up-right text-muted"></i>
+              </div>
+              <h3>LinkedIn</h3>
+              <p class="handle">miraj-miah</p>
+              <p>Connect professionally, explore academic milestones, and follow career updates.</p>
+            </div>
+            <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" class="btn-social-action">
+              <span>View Profile</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+
+          <!-- Email Card -->
+          <div class="spotlight-card social-card">
+            <div>
+              <div class="social-header">
+                <div class="social-icon-box" style="color:var(--accent-primary);"><i class="bi bi-envelope"></i></div>
+                <button type="button" class="btn-copy-email" style="background:none;border:none;color:var(--text-muted);cursor:pointer;" title="Copy email">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <h3>Direct Email</h3>
+              <p class="handle">mirajmiah964@gmail.com</p>
+              <p>Reach out directly for internship discussions, campus placements, or collaborative ideas.</p>
+            </div>
+            <a href="mailto:mirajmiah964@gmail.com" class="btn-social-action">
+              <span>Send Message</span>
+              <i class="bi bi-send"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. CONTACT SECTION ==================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="bi bi-chat-dots"></i> Start a conversation</span>
+          <h2 class="section-title">Let's Connect.</h2>
+          <div class="section-title-line"></div>
+          <p class="section-desc">
+            Have an interesting idea, project, or opportunity? I'd love to connect, exchange ideas, and explore ways to build something meaningful.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left: Direct Info Card -->
+          <div class="spotlight-card contact-info-card">
+            <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:1rem;">Direct Channels</h3>
+            <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2rem;">
+              Whether you are a recruiter, software developer, or fellow student, my inbox is always open.
+            </p>
+
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="social-icon-box" style="width:40px;height:40px;border-radius:10px;font-size:1.1rem;">
+                  <i class="bi bi-envelope-at text-indigo-400"></i>
+                </div>
+                <div>
+                  <span style="font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;color:var(--text-muted);display:block;">Email Address</span>
+                  <a href="mailto:mirajmiah964@gmail.com" style="font-size:0.875rem;font-weight:600;color:var(--text-primary);">
+                    mirajmiah964@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="social-icon-box" style="width:40px;height:40px;border-radius:10px;font-size:1.1rem;">
+                  <i class="bi bi-geo-alt text-cyan-400"></i>
+                </div>
+                <div>
+                  <span style="font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;color:var(--text-muted);display:block;">Location</span>
+                  <span style="font-size:0.875rem;font-weight:600;color:var(--text-primary);">
+                    Siliguri, West Bengal, India
+                  </span>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="social-icon-box" style="width:40px;height:40px;border-radius:10px;font-size:1.1rem;">
+                  <i class="bi bi-mortarboard text-purple-400"></i>
+                </div>
+                <div>
+                  <span style="font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;color:var(--text-muted);display:block;">Institution</span>
+                  <span style="font-size:0.875rem;font-weight:600;color:var(--text-primary);">
+                    Siliguri Institute of Technology
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Professional Contact Form -->
+          <div class="spotlight-card contact-form-card">
+            <!-- Form Success State -->
+            <div id="contactSuccess" style="display:none;text-align:center;padding:2.5rem 1rem;">
+              <div style="width:56px;height:56px;border-radius:50%;background:rgba(16,185,129,0.1);color:var(--accent-emerald);display:flex;align-items:center;justify-content:center;font-size:1.75rem;margin:0 auto 1.25rem;">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:0.5rem;">Message Prepared!</h3>
+              <p style="font-size:0.875rem;color:var(--text-secondary);max-width:380px;margin:0 auto;">
+                Your default mail client has opened with your inquiry pre-filled. You can also reach me directly at <strong>mirajmiah964@gmail.com</strong>.
+              </p>
+            </div>
+
+            <!-- Form Inputs -->
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Full Name <span style="color:var(--accent-rose);">&ast;</span></label>
+                <input type="text" id="contactName" class="form-control" placeholder="e.g. Alex Morgan">
+                <div class="form-error-msg" id="contactNameError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address <span style="color:var(--accent-rose);">&ast;</span></label>
+                <input type="email" id="contactEmail" class="form-control" placeholder="alex@example.com">
+                <div class="form-error-msg" id="contactEmailError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Subject <span style="color:var(--accent-rose);">&ast;</span></label>
+                <input type="text" id="contactSubject" class="form-control" placeholder="Internship Opportunity / Project Collaboration">
+                <div class="form-error-msg" id="contactSubjectError"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message <span style="color:var(--accent-rose);">&ast;</span></label>
+                <textarea id="contactMessage" class="form-control" rows="4" placeholder="Hi Miraj, I would like to connect with you regarding..."></textarea>
+                <div class="form-error-msg" id="contactMessageError"></div>
+              </div>
+
+              <button type="submit" class="btn-primary" id="contactSubmitBtn" style="width:100%;justify-content:center;">
+                <span>Send Message</span>
+                <i class="bi bi-send"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>MIRAJ MIAH</h3>
+          <p>Designed and built with passion by Miraj Miah.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="copyrightYear">2026</span> Miraj Miah. All rights reserved.
+        </div>
+        <div style="display:flex;gap:1rem;">
+          <a href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);" title="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/miraj-miah-3b30a82a2/" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);" title="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="mailto:mirajmiah964@gmail.com" style="color:var(--text-muted);" title="Email">
+            <i class="bi bi-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="floating-back-to-top" id="backToTopBtn" aria-label="Back to top" title="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Feature Details Modal -->
+  <div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-content-box">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div style="margin-bottom:1rem;">
+        <span id="modalProjectTagline" style="font-family:var(--font-mono);font-size:0.75rem;text-transform:uppercase;color:var(--accent-primary);font-weight:600;"></span>
+        <h3 id="modalProjectTitle" style="font-size:1.65rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;"></h3>
+      </div>
+
+      <p id="modalProjectDesc" style="font-size:0.9rem;color:var(--text-secondary);line-height:1.65;margin-bottom:1.5rem;"></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <h4 style="font-size:0.8125rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">
+          Key Engineered Features
+        </h4>
+        <ul id="modalProjectFeatures" style="list-style:none;padding:0;margin:0;"></ul>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <h4 style="font-size:0.8125rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem;">
+          Technologies
+        </h4>
+        <div id="modalProjectTech" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;padding-top:1rem;border-top:1px solid var(--border-subtle);">
+        <a id="modalGithubLink" href="https://github.com/mirajmiah" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.8125rem;padding:0.6rem 1.25rem;">
+          <i class="bi bi-github"></i>
+          <span>View on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ultra-Modern Script Engine -->
+  <script type="module" src="js/script.js"></script>
+</body>
 </html>
