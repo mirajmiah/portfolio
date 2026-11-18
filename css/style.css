@@ -1108,6 +1108,12 @@ button, input, textarea {
   transform: translateY(-1px);
 }
 
+.icon-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .btn-details {
   font-size: 0.8125rem;
   font-weight: 600;

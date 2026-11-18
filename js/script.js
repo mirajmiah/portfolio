@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTechStack = document.getElementById('modalProjectTech');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const modalGithubLink = document.getElementById('modalGithubLink');
+  const modalDemoLink = document.getElementById('modalDemoLink');
 
   const projectData = {
     talksy: {
@@ -250,7 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Clean responsive layout engineered for desktop, tablet, and mobile'
       ],
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io'],
-      github: 'https://github.com/mirajmiah'
+      github: 'https://github.com/mirajmiah/Talksy',
+      demo: 'https://chatkaro-7cv0.onrender.com'
     },
     ecommerce: {
       title: 'E-Commerce Web Application',
@@ -265,7 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Modern responsive UI with intuitive checkout flow'
       ],
       technologies: ['JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
-      github: 'https://github.com/mirajmiah'
+      github: 'https://github.com/mirajmiah',
+      demo: null
     },
     medicine: {
       title: 'Medicine Reminder Application',
@@ -279,7 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Clean, accessible interface designed for all age demographics'
       ],
       technologies: ['Java', 'SQLite', 'OOP Design Patterns'],
-      github: 'https://github.com/mirajmiah'
+      github: 'https://github.com/mirajmiah',
+      demo: null
     }
   };
 
@@ -290,7 +294,24 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = data.title;
     modalTagline.textContent = data.tagline;
     modalDesc.textContent = data.description;
-    modalGithubLink.href = data.github;
+    
+    if (modalGithubLink) {
+      if (data.github) {
+        modalGithubLink.href = data.github;
+        modalGithubLink.style.display = 'inline-flex';
+      } else {
+        modalGithubLink.style.display = 'none';
+      }
+    }
+
+    if (modalDemoLink) {
+      if (data.demo) {
+        modalDemoLink.href = data.demo;
+        modalDemoLink.style.display = 'inline-flex';
+      } else {
+        modalDemoLink.style.display = 'none';
+      }
+    }
 
     modalFeatures.innerHTML = data.features
       .map((f) => `<li style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;font-size:0.875rem;"><i class="bi bi-check2-circle" style="color:var(--accent-emerald);margin-top:0.15rem;"></i><span>${f}</span></li>`)

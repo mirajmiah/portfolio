@@ -122,8 +122,8 @@ export const personalInfo = {
         "Clean, fully responsive layout"
       ],
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io"],
-      githubUrl: "https://github.com/mirajmiah",
-      liveUrl: null, // honest: repository / under development
+      githubUrl: "https://github.com/mirajmiah/Talksy",
+      liveUrl: "https://chatkaro-7cv0.onrender.com",
     },
     {
       id: "project-ecommerce",
