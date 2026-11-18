@@ -144,7 +144,7 @@ export const personalInfo = {
         "Mobile-first, responsive user interface"
       ],
       technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB", "REST APIs"],
-      githubUrl: "https://github.com/mirajmiah",
+      githubUrl: null,
       liveUrl: null,
     },
     {
@@ -164,7 +164,7 @@ export const personalInfo = {
         "Clean, intuitive, and user-friendly interface"
       ],
       technologies: ["Java", "SQLite", "OOP Design"],
-      githubUrl: "https://github.com/mirajmiah",
+      githubUrl: null,
       liveUrl: null,
     }
   ],

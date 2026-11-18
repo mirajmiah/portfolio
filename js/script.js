@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Modern responsive UI with intuitive checkout flow'
       ],
       technologies: ['JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs'],
-      github: 'https://github.com/mirajmiah',
+      github: null,
       demo: null
     },
     medicine: {
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Clean, accessible interface designed for all age demographics'
       ],
       technologies: ['Java', 'SQLite', 'OOP Design Patterns'],
-      github: 'https://github.com/mirajmiah',
+      github: null,
       demo: null
     }
   };
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = data.title;
     modalTagline.textContent = data.tagline;
     modalDesc.textContent = data.description;
-    
+
     if (modalGithubLink) {
       if (data.github) {
         modalGithubLink.href = data.github;
