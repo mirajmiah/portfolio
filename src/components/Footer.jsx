@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t dark:border-white/10 dark:bg-dark-surface/50 light:border-slate-200 light:bg-slate-50 py-12">
+    <footer className="border-t dark:border-white/10 dark:bg-dark-surface/50 light:border-slate-200 light:bg-slate-50 pt-12 pb-24 sm:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b dark:border-white/10 light:border-slate-200">
           <div>
